@@ -1,135 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>🌑 Paul Chen</title>
+    <title>Artwork | Paul Chen</title>
     
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/68f8681dba.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Additional styles for artwork page */
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .art-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background-color: var(--card-color);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        
+        .art-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .art-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .art-caption {
+            padding: 1rem;
+        }
+        
+        .art-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .art-medium {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.2rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .art-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html" style="font-size: 150%; color:black;"><b>Paul Chen</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">Paul Chen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#Project">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Artwork.html">Artwork</a></li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="experience.html">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="artwork.html">Artwork</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section id="Artwork">
+    <section id="artwork-intro" class="fade-in">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                    <img src="art/profile.jpg" width="100%" alt="Profile picture">
-                    <h3 class="myName">I am <strong><i style="color:rgb(30,49,36);">Paul</i></strong> <span style="font-size:14px; color:rgb(30,49,36);">(him/his)</span></h3>
-                    <h6>AI Enthusiast, Artist, and Boardgame Lover</h6>
-                    <p></p>
-                    <div>
-                        <a href="https://www.linkedin.com/in/paiweichen/"><i class="fa fa-linkedin-square" style="font-size:20px;color:black;"></i></a>
-                        <a href="https://github.com/paul46186"><i class="fa fa-github" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                        <a href="files/Paul Chen Resume.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                        <a href='mailto:paul46186@gmail.com'><i class="fa fa-envelope" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                        <a href="https://www.instagram.com/paul46186"><i class="fa fa-instagram" style="font-size:20px;color:black;margin-left:15px"></i></a>
+                <div class="col-lg-3">
+                    <div class="card mb-4 sticky-top" style="top: 80px; z-index: 100;">
+                        <div class="card-body p-4 text-center">
+                            <img src="art/profile.jpg" alt="Paul Chen" class="img-fluid rounded-4 mb-4" style="max-width: 100%;">
+                            <h3>Paul Chen</h3>
+                            <p class="text-muted mb-3">AI Enthusiast, Artist, and Boardgame Lover</p>
+                            <div class="social-links justify-content-center">
+                                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/paul46186" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                                    <i class="far fa-file-pdf"></i>
+                                </a>
+                                <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="jumbotron" style="background-color: rgb(207,214,220)!important;">
-                        <div class="row">
-
-                            <div class="col-md-6 text-left">
-                                <div class="outer">
-                                    <img src="art/Self portrait.JPG" width="100%" alt="Self portrait">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Self portrait <i class="fa fa-tags" aria-hidden="true"></i> Sketching</p>
-                                </div>
-                            </div>
+                
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="mb-3">Artwork Gallery</h2>
+                            <p>Welcome to my creative space. Here you'll find a collection of my artwork spanning various mediums from digital art on Procreate to traditional sketching, oil painting, watercolor, and photography. Art is my way of expressing thoughts and emotions that can't always be put into words.</p>
                             
-                            <div class="col-md-6 text-left">
-                                <div class="outer">
-                                    <img src="art/this too shall pass.png" width="100%" alt="This too shall pass">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">This too shall pass <i class="fa fa-tags" aria-hidden="true"></i> Ipad Procreate</p>
+                            <div class="art-grid">
+                                <!-- Self portrait -->
+                                <div class="art-item" data-category="sketching">
+                                    <a href="art/Self portrait.JPG" data-lightbox="gallery" data-title="Self portrait - Sketching">
+                                        <img src="art/Self portrait.JPG" alt="Self portrait">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Self portrait</h5>
+                                        <span class="art-medium">Sketching</span>
+                                        <div class="art-actions">
+                                            <a href="art/Self portrait.JPG" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-6 text-left">
-                                <div class="outer">
-                                    <img src="art/eye.jpg" width="100%" alt="Eye">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Eye <i class="fa fa-tags" aria-hidden="true"></i> Ipad Procreate</p>
+                                
+                                <!-- This too shall pass -->
+                                <div class="art-item" data-category="procreate">
+                                    <a href="art/this too shall pass.png" data-lightbox="gallery" data-title="This too shall pass - Ipad Procreate">
+                                        <img src="art/this too shall pass.png" alt="This too shall pass">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">This too shall pass</h5>
+                                        <span class="art-medium">Ipad Procreate</span>
+                                        <div class="art-actions">
+                                            <a href="art/this too shall pass.png" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-6 text-left">
-                                <div class="outer">
-                                    <img src="art/rabbit.jpg" width="100%" alt="Rabbit">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Rabbit <i class="fa fa-tags" aria-hidden="true"></i> Ipad Procreate</p>
+                                
+                                <!-- Eye -->
+                                <div class="art-item" data-category="procreate">
+                                    <a href="art/eye.jpg" data-lightbox="gallery" data-title="Eye - Ipad Procreate">
+                                        <img src="art/eye.jpg" alt="Eye">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Eye</h5>
+                                        <span class="art-medium">Ipad Procreate</span>
+                                        <div class="art-actions">
+                                            <a href="art/eye.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-6 text-left">
-                                <div class="outer">
-                                    <img src="art/aurora.jpg" width="100%" alt="Aurora">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Aurora <i class="fa fa-tags" aria-hidden="true"></i> Oil Painting</p>
+                                
+                                <!-- Rabbit -->
+                                <div class="art-item" data-category="procreate">
+                                    <a href="art/rabbit.jpg" data-lightbox="gallery" data-title="Rabbit - Ipad Procreate">
+                                        <img src="art/rabbit.jpg" alt="Rabbit">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Rabbit</h5>
+                                        <span class="art-medium">Ipad Procreate</span>
+                                        <div class="art-actions">
+                                            <a href="art/rabbit.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/repose.jpg' width="100%" alt="Repose">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Repose <i class="fa fa-tags" aria-hidden="true"></i> Watercolor Painting</p>
+                                
+                                <!-- Aurora -->
+                                <div class="art-item" data-category="oil">
+                                    <a href="art/aurora.jpg" data-lightbox="gallery" data-title="Aurora - Oil Painting">
+                                        <img src="art/aurora.jpg" alt="Aurora">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Aurora</h5>
+                                        <span class="art-medium">Oil Painting</span>
+                                        <div class="art-actions">
+                                            <a href="art/aurora.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/strive.jpg' width="100%" alt="Strive">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Strive <i class="fa fa-tags" aria-hidden="true"></i> Watercolor Painting</p>
+                                
+                                <!-- Repose -->
+                                <div class="art-item" data-category="watercolor">
+                                    <a href="art/repose.jpg" data-lightbox="gallery" data-title="Repose - Watercolor Painting">
+                                        <img src="art/repose.jpg" alt="Repose">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Repose</h5>
+                                        <span class="art-medium">Watercolor Painting</span>
+                                        <div class="art-actions">
+                                            <a href="art/repose.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/light.jpg' width="100%" alt="Let there be light">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Let there be light <i class="fa fa-tags" aria-hidden="true"></i> Photograph</p>
+                                
+                                <!-- Strive -->
+                                <div class="art-item" data-category="watercolor">
+                                    <a href="art/strive.jpg" data-lightbox="gallery" data-title="Strive - Watercolor Painting">
+                                        <img src="art/strive.jpg" alt="Strive">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Strive</h5>
+                                        <span class="art-medium">Watercolor Painting</span>
+                                        <div class="art-actions">
+                                            <a href="art/strive.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/practice.jpg' width="100%" alt="Practice">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Practice <i class="fa fa-tags" aria-hidden="true"></i> Ipad Procreate</p>
+                                
+                                <!-- Let there be light -->
+                                <div class="art-item" data-category="photography">
+                                    <a href="art/light.jpg" data-lightbox="gallery" data-title="Let there be light - Photograph">
+                                        <img src="art/light.jpg" alt="Let there be light">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Let there be light</h5>
+                                        <span class="art-medium">Photography</span>
+                                        <div class="art-actions">
+                                            <a href="art/light.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/apple.jpg' width="100%" alt="Apple or Watermelon?">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Apple or Watermelon? <i class="fa fa-tags" aria-hidden="true"></i> Sketching</p>
+                                
+                                <!-- Practice -->
+                                <div class="art-item" data-category="procreate">
+                                    <a href="art/practice.jpg" data-lightbox="gallery" data-title="Practice - Ipad Procreate">
+                                        <img src="art/practice.jpg" alt="Practice">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Practice</h5>
+                                        <span class="art-medium">Ipad Procreate</span>
+                                        <div class="art-actions">
+                                            <a href="art/practice.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class='col-md-6 text-left'>
-                                <div class='outer'>
-                                    <img src='art/flower.jpg' width="100%" alt="Flower">
-                                    <p style="color:black; font-size:16px; font-weight:normal;">Flower <i class="fa fa-tags" aria-hidden="true"></i> Pen</p>
+                                
+                                <!-- Apple or Watermelon? -->
+                                <div class="art-item" data-category="sketching">
+                                    <a href="art/apple.jpg" data-lightbox="gallery" data-title="Apple or Watermelon? - Sketching">
+                                        <img src="art/apple.jpg" alt="Apple or Watermelon?">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Apple or Watermelon?</h5>
+                                        <span class="art-medium">Sketching</span>
+                                        <div class="art-actions">
+                                            <a href="art/apple.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Flower -->
+                                <div class="art-item" data-category="pen">
+                                    <a href="art/flower.jpg" data-lightbox="gallery" data-title="Flower - Pen">
+                                        <img src="art/flower.jpg" alt="Flower">
+                                    </a>
+                                    <div class="art-caption">
+                                        <h5 class="art-title">Flower</h5>
+                                        <span class="art-medium">Pen</span>
+                                        <div class="art-actions">
+                                            <a href="art/flower.jpg" download class="btn btn-sm btn-outline">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,18 +324,43 @@
         </div>
     </section>
 
-    <hr align="center" width="100%">
-
-    <footer id="Contact">
+    <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>New York, NY</p>
-                    <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
-                </div>
+            <div class="social-links mb-4">
+                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/paul46186" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                    <i class="far fa-file-pdf"></i>
+                </a>
+                <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
+            <p>New York, NY</p>
+            <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
         </div>
     </footer>
-</body>
 
+    <!-- Bootstrap, Lightbox & Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lightbox configuration
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'showImageNumberLabel': false,
+                'fadeDuration': 300
+            });
+        });
+    </script>
+</body>
 </html>

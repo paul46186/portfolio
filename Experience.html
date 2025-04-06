@@ -1,330 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>🌑 Paul Chen</title>
+    <title>Experience | Paul Chen</title>
     
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/68f8681dba.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <div class='container-fluid'>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html" style="font-size: 150%; color:black;"><b>Paul Chen</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">Paul Chen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#Project">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Artwork.html">Artwork</a></li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="experience.html">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="artwork.html">Artwork</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 
-    <div class='container-fluid'>
-        <div class="row">
-            <div class='col-md-3'>
-                <img src='pictures/headshot.JPG' width='100%' alt="Profile Picture">
-                <h3 class="myName">I am <strong><i style="color:rgb(30,49,36);">Paul</i></strong> <span style="font-size:14px; color:rgb(30,49,36);">(him/his)</span></h3>
-                <h6>AI Enthusiast, Artist, and Boardgame Lover</h6>
-                <div>
-                    <a href="https://www.linkedin.com/in/paiweichen/"><i class="fa fa-linkedin-square" style="font-size:20px;color:black;"></i></a>
-                    <a href="https://github.com/paul46186"><i class="fa fa-github" style="font-size:20px;color:black;margin-left:15px"></i></a> 
-                    <a href="files/Paul Chen Resume.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                    <a href='mailto:paul46186@gmail.com'><i class="fa fa-envelope" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                    <a href="https://www.instagram.com/paul46186"><i class="fa fa-instagram" style="font-size:20px;color:black;margin-left:15px"></i></a>
+    <section id="profile" class="fade-in">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body p-4 text-center">
+                            <img src="pictures/headshot.JPG" alt="Paul Chen" class="img-fluid rounded-4 mb-4" style="max-width: 250px;">
+                            <h3>Paul Chen</h3>
+                            <p class="text-muted mb-3">AI Enthusiast, Artist, and Boardgame Lover</p>
+                            <div class="social-links justify-content-center">
+                                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/paul46186" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                                    <i class="far fa-file-pdf"></i>
+                                </a>
+                                <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class='col-md-9'>
-                <div class="jumbotron">
-                    <h2>Professional Experience</h2>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>CVS Health</strong></span>
-                            <span style="font-family: verdana;">New York, NY</span>
+                
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="mb-4">Professional Experience</h2>
+                            
+                            <!-- CVS Health -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>CVS Health</h4>
+                                    <span>New York, NY</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Senior Decision Scientist</p>
+                                    <p class="experience-date">May 2024 – Present</p>
+                                </div>
+                                <ul>
+                                    <li>Led the end-to-end development and productionization of a GenAI chatbot that simplifies dashboard insights for non-technical users. The solution processes natural language queries, dynamically converts them into SQL, queries real-time databases, and returns actionable insights in plain language</li>
+                                    <li>Saved 60% of manual effort by leading the development and productionization of a GenAI solution that extracts patient records and auto-populates prior authorization forms with 90%+ accuracy</li>
+                                    <li>Delivered $1M+ in annual savings by leading data-driven analyses to optimize benefit verification processes</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Kearney -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>Kearney</h4>
+                                    <span>Chicago, IL</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Management Consultant (Digital and Analytics practice)</p>
+                                    <p class="experience-date">Jul 2022 – May 2024</p>
+                                </div>
+                                <ul>
+                                    <li>Transformed indirect logistics costs for a discount wholesaler, identifying $2M (16%) in potential savings by consolidating and analyzing RFP responses from 70+ carriers, modeling savings scenarios, and providing customized feedback to each carrier using Python and Alteryx</li>
+                                    <li>Designed, developed, and owned a generative AI solution for a leading multinational IT company, reducing data-driven decision-making time for C-Suite executives by over 90%</li>
+                                    <li>Pioneered 2 generative AI PoCs in the procurement space, enhancing spend categorization and contract metadata extraction efficiency by 70%</li>
+                                    <li>Led the analytic workstream in a 4-wall assessment project for a leading outdoor retailer and built a master dataset, delivering high-quality analyses in baseline, labor models, cost-to-serve models, and internal/external benchmarks</li>
+                                    <li>Conducted E2E supply chain diagnosis for a leading manufacturing company, resulting in savings of $2M annually</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- SIL International -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>SIL International (Linguistic NGO affiliated with United Nations)</h4>
+                                    <span>West Lafayette, IN</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Data Scientist Intern</p>
+                                    <p class="experience-date">Jan 2022 – May 2022</p>
+                                </div>
+                                <ul>
+                                    <li>Reduced monetary cost and training time for a translation model by scripting an algorithm to optimize training datasets and provide a clear strategy for selecting semantic domains (translation content) via Python</li>
+                                    <li>Devised a novel approach for translating rare languages, previously reliant on human translation</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Purdue University -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>Purdue University Krannert School of Management</h4>
+                                    <span>West Lafayette, IN</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Graduate Teaching Assistant</p>
+                                    <p class="experience-date">Sep 2021 – May 2022</p>
+                                </div>
+                                <ul>
+                                    <li>Assisted professors with lesson planning, holding office hours, and grading assignments and exams</li>
+                                    <li>Teaching Assistant for Management Information System (MGMT382) (1 Semester)</li>
+                                    <li>Teaching Assistant for Python Programming (MGMT586) (2 modules)</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Shoetown Group -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>Shoetown Group (Shoe Manufacturer for Nike)</h4>
+                                    <span>Qingyuan, China</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Data Analyst (Co-op)</p>
+                                    <p class="experience-date">Feb 2019 – Feb 2020</p>
+                                </div>
+                                <ul>
+                                    <li>Automated inventory system, cutting manual data entry time by 3600%, using Excel VBA</li>
+                                    <li>Implemented a machine performance system to enable the company to monitor 3D printer running times</li>
+                                </ul>
+                                <div class="mt-2">
+                                    <p class="experience-title">Research Team Lead</p>
+                                    <ul>
+                                        <li>Led a team of 5 people in defining an optimization problem by coordinating with stakeholders, assigning tasks, setting timelines for deliverables, and presenting to professors with an oral defense</li>
+                                        <li>Provided C-Suite executives with an optimized model for workstation layout computable within 1 minute to minimize assembly costs by using robust optimization models in Python and Gurobi</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Senior Decision Scientist</i></p>
-                            <p><i style="font-family: verdana;">May 2024 – Present</i></p>
-                        </div>
-                        <ul>
-                            <li>Led the end-to-end development and productionization of a GenAI chatbot that simplifies dashboard insights for non-technical users. The solution processes natural language queries, dynamically converts them into SQL, queries real-time databases, and returns actionable insights in plain language</li>
-                            <li>Saved 60% of manual effort by leading the development and productionization of a GenAI solution that extracts patient records and auto-populates prior authorization forms with 90%+ accuracy</li>
-                            <li>Delivered $1M+ in annual savings by leading data-driven analyses to optimize benefit verification processes</li>
-                        
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Kearney</strong></span>
-                            <span style="font-family: verdana;">Chicago, IL</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Management Consultant (Digital and Analytics practice)</i></p>
-                            <p><i style="font-family: verdana;">Jul 2022 – May 2024</i></p>
-                        </div>
-                        <ul>
-                            <li>Transformed indirect logistics costs for a discount wholesaler, identifying $2M (16%) in potential savings by consolidating and analyzing RFP responses from 70+ carriers, modeling savings scenarios, and providing customized feedback to each carrier using Python and Alteryx</li>
-                            <li>Designed, developed, and owned a generative AI solution for a leading multinational IT company, reducing data-driven decision-making time for C-Suite executives by over 90%</li>
-                            <li>Pioneered 2 generative AI PoCs in the procurement space, enhancing spend categorization and contract metadata extraction efficiency by 70%</li>
-                            <li>Led the analytic workstream in a 4-wall assessment project for a leading outdoor retailer and built a master dataset, delivering high-quality analyses in baseline, labor models, cost-to-serve models, and internal/external benchmarks</li>
-                            <li>Conducted E2E supply chain diagnosis for a leading manufacturing company, resulting in savings of $2M annually</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>SIL International (Linguistic NGO affiliated with United Nations)</strong></span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Data Scientist Intern</i></p>
-                            <p><i style="font-family: verdana;">Jan 2022 – May 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Reduced monetary cost and training time for a translation model by scripting an algorithm to optimize training datasets and provide a clear strategy for selecting semantic domains (translation content) via Python</li>
-                            <li>Devised a novel approach for translating rare languages, previously reliant on human translation</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Purdue University Krannert School of Management</strong></span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Graduate Teaching Assistant</i></p>
-                            <p><i style="font-family: verdana;">Sep 2021 – May 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Assisted professors with lesson planning, holding office hours, and grading assignments and exams</li>
-                            <li>Teaching Assistant for Management Information System (MGMT382) (1 Semester)</li>
-                            <li>Teaching Assistant for Python Programming (MGMT586) (2 modules)</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Shoetown Group (Shoe Manufacturer for Nike)</strong></span>
-                            <span style="font-family: verdana;">Qingyuan, China</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Data Analyst (Co-op)</i></p>
-                            <p><i style="font-family: verdana;">Feb 2019 – Feb 2020</i></p>
-                        </div>
-                        <ul>
-                            <li>Automated inventory system, cutting manual data entry time by 3600%, using Excel VBA</li>
-                            <li>Implemented a machine performance system to enable the company to monitor 3D printer running times</li>
-                        </ul>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Research Team Lead</i></p>
-                        </div>
-                        <ul>
-                            <li>Led a team of 5 people in defining an optimization problem by coordinating with stakeholders, assigning tasks, setting timelines for deliverables, and presenting to professors with an oral defense</li>
-                            <li>Provided C-Suite executives with an optimized model for workstation layout computable within 1 minute to minimize assembly costs by using robust optimization models in Python and Gurobi</li>
-                        </ul>
-                    </div>
-
-                    <h2>Additional Achievements</h2>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Kearney Purdue Student Lab</strong></span>
-                            <span style="font-family: verdana;">Chicago, IL</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Mentor</i></p>
-                            <p><i style="font-family: verdana;">Apr 2024</i></p>
-                        </div>
-                        <ul>
-                            <li>Mentored a team in the Purdue MSBA program to complete a network optimization project for a leading car aftermarket company</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Suit Up</strong></span>
-                            <span style="font-family: verdana;">Chicago, IL</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Mentor</i></p>
-                            <p><i style="font-family: verdana;">Oct 2023</i></p>
-                        </div>
-                        <ul>
-                            <li>Coached and mentored underrepresented students, fostering their discovery of passions through hands-on experiential learning. This collaborative effort contributed to my team securing 1st place in the business case competition</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/Iowa Fastenal Presentation.pdf"><strong>2022 Iowa Graduate Business Analytics Case Competition</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Analyst</i></p>
-                            <p><i style="font-family: verdana;">Apr 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Won 2nd place in the competition</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/SAS Optimization Challenge Slide.pdf"><strong>2022 SAS Optimization Challenge</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Team Leader</i></p>
-                            <p><i style="font-family: verdana;">Feb 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Won 1st place in the competition</li>
-                            <li>Utilized SAS to forecast water usage and developed three optimization models to determine the optimal contract with minimum cost</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/CCAC.pdf"><strong>2022 Crossroads Classic Analytics Challenge</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Team Leader</i></p>
-                            <p><i style="font-family: verdana;">Feb 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Won 3rd place in the <a style="color:navy" href="https://www.kaggle.com/c/crossroads-classic-datathon-2022/leaderboard"><strong>Kaggle Leaderboard</strong></a></li>
-                            <li>Defined phishing email and created an ensemble model (SVC + XGBoost) that has 98.53% accuracy</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/PowerShift_TeamPoweranger.pdf"><strong>2022 Power Shift Case Competition</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Team Leader</i></p>
-                            <p><i style="font-family: verdana;">Feb 2022</i></p>
-                        </div>
-                        <ul>
-                            <li>Developed three action plans for networking, education, and mental care as a key to solving the structural women representatives problems in the semiconductor industry</li>
-                            <li><a style="color:navy" href="https://youtu.be/koiKcNOIdA4"><strong>Watch the video demonstration</strong></a></li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/KGSA case competition.pdf"><strong>2021 KGSA Case Competition</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Business Analyst</i></p>
-                            <p><i style="font-family: verdana;">Nov 2021</i></p>
-                        </div>
-                        <ul>
-                            <li>Won 3rd place in the competition</li>
-                            <li>Designed new subscription business models and marketing strategies for business transformation</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/WRCC Stamina Case Competition.pdf"><strong>2021 STAMINA IT/Analytics Case Competition</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">West Lafayette, IN</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Team Leader</i></p>
-                            <p><i style="font-family: verdana;">Sep 2021</i></p>
-                        </div>
-                        <ul>
-                            <li>Won 3rd place in the competition</li>
-                            <li>Provided 3 piloting locations recommendations for a <a style="color:navy" href="https://www.linkedin.com/company/dronedek/"><strong>drone startup</strong></a></li>
-                            <li>Performed risk analysis and developed other innovative revenue streams</li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org">
-                                <a style="color:navy" href="files/Special Topic.pdf"><strong>Special Topic Group Study</strong></a>
-                            </span>
-                            <span style="font-family: verdana;">Tainan, Taiwan</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Research Team Lead</i></p>
-                            <p><i style="font-family: verdana;">Feb 2019 – Feb 2020</i></p>
-                        </div>
-                        <ul>
-                            <li>Constructed 3 models with Python and utilized Gurobi to find optimized workstation solutions</li>
-                            <li>Led a group of five people to complete a complex real-life assembly line problem within one year</li>
-                            <li><a style="color:navy" href="files/專題書面.pdf"><strong>Thesis</strong></a></li>
-                        </ul>
-                    </div>
-
-                    <div class='chunk' style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="org"><strong>Global Leadership & Engagement Program in Stanford University</strong></span>
-                            <span style="font-family: verdana;">San Francisco, CA</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p><i>Team Leader</i></p>
-                            <p><i style="font-family: verdana;">Feb 2017</i></p>
-                        </div>
-                        <ul>
-                            <li>Directed a team of 5 students from various countries to conduct an independent study</li>
-                            <li>Provided recommendations with a <a style="color:navy" href="https://site-1117778-3397-7620.mystrikingly.com/"><strong>website</strong></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
-            <div class='col-md-1'></div>
         </div>
-    </div>
+    </section>
 
-    <hr align="center" width="100%">
-
-    <footer id="Contact">
-        <div class="container">
-            <div class='row'>
-                <div class='col-md-12 text-center'>
-                    <p>New York, NY</p>
-                    <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
+    <section id="achievements" class="fade-in delay-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="mb-4">Additional Achievements</h2>
+                            
+                            <!-- Kearney Purdue Student Lab -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>Kearney Purdue Student Lab</h4>
+                                    <span>Chicago, IL</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Mentor</p>
+                                    <p class="experience-date">Apr 2024</p>
+                                </div>
+                                <ul>
+                                    <li>Mentored a team in the Purdue MSBA program to complete a network optimization project for a leading car aftermarket company</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Suit Up -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>Suit Up</h4>
+                                    <span>Chicago, IL</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Mentor</p>
+                                    <p class="experience-date">Oct 2023</p>
+                                </div>
+                                <ul>
+                                    <li>Coached and mentored underrepresented students, fostering their discovery of passions through hands-on experiential learning. This collaborative effort contributed to my team securing 1st place in the business case competition</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Iowa Graduate Business Analytics Case Competition -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>
+                                        <a href="files/Iowa Fastenal Presentation.pdf">2022 Iowa Graduate Business Analytics Case Competition</a>
+                                    </h4>
+                                    <span>West Lafayette, IN</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Analyst</p>
+                                    <p class="experience-date">Apr 2022</p>
+                                </div>
+                                <ul>
+                                    <li>Won 2nd place in the competition</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- SAS Optimization Challenge -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h4>
+                                        <a href="files/SAS Optimization Challenge Slide.pdf">2022 SAS Optimization Challenge</a>
+                                    </h4>
+                                    <span>West Lafayette, IN</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="experience-title">Team Leader</p>
+                                    <p class="experience-date">Feb 2022</p>
+                                </div>
+                                <ul>
+                                    <li>Won 1st place in the competition</li>
+                                    <li>Utilized SAS to forecast water usage and developed three optimization models to determine the optimal contract with minimum cost</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Show more achievements button -->
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary" id="showMoreBtn">Show More Achievements</button>
+                            </div>
+                            
+                            <div id="moreAchievements" style="display: none;">
+                                <!-- Crossroads Classic Analytics Challenge -->
+                                <div class="experience-item mt-4">
+                                    <div class="experience-header">
+                                        <h4>
+                                            <a href="files/CCAC.pdf">2022 Crossroads Classic Analytics Challenge</a>
+                                        </h4>
+                                        <span>West Lafayette, IN</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="experience-title">Team Leader</p>
+                                        <p class="experience-date">Feb 2022</p>
+                                    </div>
+                                    <ul>
+                                        <li>Won 3rd place in the <a href="https://www.kaggle.com/c/crossroads-classic-datathon-2022/leaderboard">Kaggle Leaderboard</a></li>
+                                        <li>Defined phishing email and created an ensemble model (SVC + XGBoost) that has 98.53% accuracy</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Power Shift Case Competition -->
+                                <div class="experience-item">
+                                    <div class="experience-header">
+                                        <h4>
+                                            <a href="files/PowerShift_TeamPoweranger.pdf">2022 Power Shift Case Competition</a>
+                                        </h4>
+                                        <span>West Lafayette, IN</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="experience-title">Team Leader</p>
+                                        <p class="experience-date">Feb 2022</p>
+                                    </div>
+                                    <ul>
+                                        <li>Developed three action plans for networking, education, and mental care as a key to solving the structural women representatives problems in the semiconductor industry</li>
+                                        <li><a href="https://youtu.be/koiKcNOIdA4">Watch the video demonstration</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- KGSA Case Competition -->
+                                <div class="experience-item">
+                                    <div class="experience-header">
+                                        <h4>
+                                            <a href="files/KGSA case competition.pdf">2021 KGSA Case Competition</a>
+                                        </h4>
+                                        <span>West Lafayette, IN</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="experience-title">Business Analyst</p>
+                                        <p class="experience-date">Nov 2021</p>
+                                    </div>
+                                    <ul>
+                                        <li>Won 3rd place in the competition</li>
+                                        <li>Designed new subscription business models and marketing strategies for business transformation</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Other achievements can be added here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links mb-4">
+                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/paul46186" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                    <i class="far fa-file-pdf"></i>
+                </a>
+                <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p>New York, NY</p>
+            <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
         </div>
     </footer>
-</body>
 
+    <!-- Bootstrap & Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show more achievements toggle
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            const moreAchievements = document.getElementById('moreAchievements');
+            
+            showMoreBtn.addEventListener('click', function() {
+                if (moreAchievements.style.display === 'none') {
+                    moreAchievements.style.display = 'block';
+                    showMoreBtn.textContent = 'Show Less';
+                } else {
+                    moreAchievements.style.display = 'none';
+                    showMoreBtn.textContent = 'Show More Achievements';
+                }
+            });
+        });
+    </script>
+</body>
 </html>

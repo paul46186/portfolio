@@ -3,88 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/68f8681dba.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>🌑 Paul Chen</title>
+    <title>Paul Chen | AI & Analytics Professional</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html" style="font-size: 150%; color:black;"><b>Paul Chen</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">Paul Chen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li> 
-                        <li class="nav-item"><a class="nav-link" href="#Project">Projects</a></li>    
-                        <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Artwork.html">Artwork</a></li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="experience.html">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="artwork.html">Artwork</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section id="intro">
-        <div class="jumbotron" style="background-color: rgb(224,229,223)!important;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-6">
-                        <div style="width: 100%">
-                            <p class="copy" style="color:black; font-size: 90%;">
-                                <strong>Hi there!</strong><br><br>
+    <section id="hero" class="fade-in">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-7 pe-lg-5">
+                    <h1>Hi, I'm Paul Chen</h1>
+                    <h3 class="mb-4">AI Enthusiast, Artist, and Decision Scientist</h3>
+                    <p class="lead mb-4">
+                        I specialize in applying AI and analytics to solve real-world problems in healthcare and beyond, transforming complex challenges into actionable insights.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/paul46186" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                            <i class="far fa-file-pdf"></i>
+                        </a>
+                        <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="mt-5">
+                        <a href="#about" class="btn btn-primary me-3">About Me</a>
+                        <a href="#projects" class="btn btn-outline">View Projects</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 mt-5 mt-lg-0">
+                    <div class="profile-image">
+                        <img src="pictures/Profile Photo.jpg" alt="Paul Chen" class="img-fluid rounded-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="fade-in delay-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <h2 class="mb-4">About Me</h2>
+                            <p>
                                 I'm a Senior Decision Scientist at CVS Health, where I use AI and analytics to solve real-world problems within healthcare. My work focuses on making complex business decisions easier through predictive modeling, optimization, and innovative use of AI. Whether it's streamlining processes or enhancing patient experiences, I aim to make a tangible impact with every project I undertake.
                             </p>
-                            <p style="font-size: 90%;">
-                                Previously, I was a Management Consultant at Kearney (Digital and Analytics), where I specialized in transforming intricate challenges into actionable insights. My experience with Generative AI and Natural Language Processing (NLP) has been instrumental in pushing the boundaries of business applications in these emerging fields. I'm particularly passionate about <i><strong>Large Language Models, optimization techniques, and the practical deployment of AI solutions.</strong></i>
+                            <p>
+                                Previously, I was a Management Consultant at Kearney (Digital and Analytics), where I specialized in transforming intricate challenges into actionable insights. My experience with Generative AI and Natural Language Processing (NLP) has been instrumental in pushing the boundaries of business applications in these emerging fields. I'm particularly passionate about <strong>Large Language Models, optimization techniques, and the practical deployment of AI solutions.</strong>
                             </p>
-                            <p style="font-size: 90%;">
+                            <p>
                                 Outside of work, I'm an avid traveler and a foodie who loves to explore new places and cultures. So far, I've visited Spain, the United States, Japan, Mexico, South Korea, China, Singapore, Indonesia (Bali), the United Kingdom, the Czech Republic, Austria, United Arab Emirates (Dubai), and Thailand! I also enjoy painting, cooking, playing board games, Nintendo, and badminton.
                             </p>
-                            <p style="font-size: 90%;">
-                                <strong>Fun fact: I am a proud Google Maps Level 7 Local Guide, and my photos have garnered over 10 million views.</strong>
+                            <p class="mb-0">
+                                <strong>Fun fact:</strong> I am a proud Google Maps Level 7 Local Guide, and my photos have garnered over 10 million views.
                             </p>
-                            <div>
-                                <a href="https://www.linkedin.com/in/paiweichen/"><i class="fa fa-linkedin-square" style="font-size:20px;color:black;"></i></a>
-                                <a href="https://github.com/paul46186"><i class="fa fa-github" style="font-size:20px;color:black;margin-left:15px"></i></a> 
-                                <a href="files/Paul Chen Resume.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                                <a href="mailto:paul46186@gmail.com"><i class="fa fa-envelope" aria-hidden="true" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                                <a href="https://www.instagram.com/paul46186"><i class="fa fa-instagram" style="font-size:20px;color:black;margin-left:15px"></i></a>
-                            </div>
-                        </div>
-                    </div>
-					<div class="col-md-5">
-						<img src="pictures/Profile Photo.jpg" width="100%" alt="Profile picture">
-					</div>
-                   
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="Skill">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>&#128588 My Skills</h3>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <i class="fab fa-python" style="margin-left: 5%;font-size:50px;">Python</i>
-                            <i class="fab fa-r-project" style="font-size:50px;margin-left:25px;color:navy"></i>
-                            <i style="font-size:50px;margin-left:25px;color:rgb(182, 5, 5)">SQL</i>
-                            <i style="font-size:50px;margin-left:25px;color:green">Excel VBA</i>
-                            <i style="font-size:50px;margin-left:25px;color:rgb(242, 200, 15)">PowerBI</i>
-                            <i style="font-size:50px;margin-left:25px;color:rgb(160, 104, 0)">HTML</i>
-                            <i style="font-size:50px;margin-left:25px;color:rgb(10, 180, 247)">SAS</i>
                         </div>
                     </div>
                 </div>
@@ -92,345 +112,345 @@
         </div>
     </section>
 
-    <hr align="center" width="100%">
-
-    <section id="Education">
+    <section id="skills" class="fade-in delay-2">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>&#127891 My Education</h3>
-                    <div class="row">
-                        <div class="col-md-3 text-left"></div>
-                        <div class="col-md-6 text-left">
-                            <div class="chunk" style="margin-top: 20px; display: flex; flex-direction: column; align-items: start;">
-                                <span class="org"><strong>Purdue University Krannert School of Management</strong></span>
-                                <div style="display: flex; justify-content: space-between; width: 100%;">
-                                    <p><i>Master of Science in Business Analytics and Information Management</i></p>
-                                    <p><i>May 2022</i></p>
+                <div class="col-lg-12 text-center mb-5">
+                    <h2>Skills & Expertise</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body p-5 text-center">
+                            <div class="row">
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fab fa-python"></i>
+                                        <span>Python</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fab fa-r-project"></i>
+                                        <span>R</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-database"></i>
+                                        <span>SQL</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-file-excel"></i>
+                                        <span>Excel VBA</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>PowerBI</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fab fa-html5"></i>
+                                        <span>HTML</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>SAS</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-robot"></i>
+                                        <span>AI/ML</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-6 mb-4">
+                                    <div class="skill-icon">
+                                        <i class="fas fa-brain"></i>
+                                        <span>LLMs</span>
+                                    </div>
                                 </div>
                             </div>
-                            <ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="fade-in delay-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 mb-5">
+                    <h2>Education</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h4>Purdue University</h4>
+                            <h5 class="text-muted">Krannert School of Management</h5>
+                            <p class="mb-2">Master of Science in Business Analytics and Information Management</p>
+                            <p class="mb-3 small">Graduated: May 2022</p>
+                            <ul class="ps-4">
                                 <li>Academic Honors | Merit Scholarship Recipient</li>
-                                <li>Technical Coursework: Computational Complexity, Analyzing Unstructured Data, R for Analytics, Data Mining, Advanced Business Analytics, Business Analytics, Management of Organizational Data, Prescriptive Analytics, Python, Speadsheet Modeling</li>
+                                <li>Technical Coursework: Computational Complexity, Analyzing Unstructured Data, R for Analytics, Data Mining, Advanced Business Analytics, and more</li>
                                 <li>Business Coursework: IT Project Management, Customer Analytics, IT Innovation, Change Management, Communication and Persuasion, Operation Management</li>
                             </ul>
                         </div>
-                        <div class="col-md-3 text-left"></div>
-
-                        <div class='col-md-3 text-left'></div>
-								<div class='col-md-6 text-left'>
-                            <div class="chunk" style="margin-top: 20px; display: flex; flex-direction: column; align-items: start;">
-                                <span class="org"><strong>National Cheng Kung University</strong></span>
-                                <div style="display: flex; justify-content: space-between; width: 100%;">
-                                    <p><i>Bachelor of Management Science, Industrial and Information Management</i></p>
-                                    <p><i>Jun 2020</i></p>
-                                </div>
-                            </div>						
-                            <ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h4>National Cheng Kung University</h4>
+                            <h5 class="text-muted">Industrial and Information Management</h5>
+                            <p class="mb-2">Bachelor of Management Science</p>
+                            <p class="mb-3 small">Graduated: June 2020</p>
+                            <ul class="ps-4">
                                 <li>Relevant Coursework: Operation Research, Optimization, Inventory Management, Quality Management, Marketing Management</li>
-                                <li>Capstone Project – “Assembly line balancing problem - The case study of a shoe manufacturing company”</li>
+                                <li>Capstone Project – "Assembly line balancing problem - The case study of a shoe manufacturing company"</li>
                             </ul>
                         </div>
-                        <div class="col-md-3 text-left"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr align="center" width="100%">
-
-    <section id="Recognitions">
+    <section id="recognitions">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>🏆 Recognitions</h3>
-                    <div class="row">
-                        <div class="col-md-3 text-left"></div>
-                        <div class="col-md-6 text-left">
-                            <span class="header"><h5>Publication and Certifications</h5></span>
-                            <div style="font-size: 90%;">
-                                <ul>
-                                    <li><a style="color:navy;" href="https://mwdsi2022.exordo.com/files/papers/42/paper_custom_fields/1/IP_MWDSI_paper_final.pdf">Intelligently Ordering Machine Translation Seed Data to Improve Low Resource Local Language Translation</a></li>
-                                    <li><a style="color:navy;" href="https://www.credly.com/badges/3f6ff670-8a64-4200-88a8-d82f9d3b856a/linked_in?t=rg5juk">Alteryx Foundational Micro-Credential</a></li>
-                                    <li><a style="color:navy;" href="https://www.hackerrank.com/certificates/63dbb4c2029e">SQL (Advanced) Certificate</a></li>
-                                    <li><a style="color:navy;" href="https://courses.nvidia.com/certificates/77e2b21bcc2e426faf640c7543ca17a1">Nvidia - Fundamentals of Deep Learning</a></li>
-                                </ul>
-                            </div>
-                            <div><p> </p></div> <!-- Deliberate spacing -->
-                            <span class="header"><h5>Awards</h5></span>
-                            <div style="font-size: 90%;">
-                                <ul>
-                                    <li><a style="color:navy;">2nd place in 2022 Iowa Graduate Business Analytics Case Competition (National)</a></li>
-                                    <li><a style="color:navy;" href="https://www.credly.com/badges/daca76ac-c535-42ec-8d17-71a65a39bca5">1st place in 2022 SAS Optimization Challenge (Purdue University)</a></li>
-                                    <li><a style="color:navy;" href="https://www.kaggle.com/c/crossroads-classic-datathon-2022/leaderboard">3rd place in 2022 Kaggle Crossroads Classic Datathon (State Level)</a></li>
-                                    <li><a style="color:navy;">3rd place in Krannert Graduate Student Association Case Competition (Purdue University)</a></li>
-                                    <li><a style="color:navy;" href="files/Case competition certificate.pdf">3rd place in STAMINA IT/Analytics Case Competition (Purdue University)</a></li>
-                                </ul>
-                            </div>
-                        </div>			
-                        <div class="col-md-3 text-left"></div>
+                <div class="col-lg-12 mb-5">
+                    <h2>Recognitions</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h4>Publications & Certifications</h4>
+                            <ul class="ps-4">
+                                <li>
+                                    <a href="https://mwdsi2022.exordo.com/files/papers/42/paper_custom_fields/1/IP_MWDSI_paper_final.pdf">Intelligently Ordering Machine Translation Seed Data to Improve Low Resource Local Language Translation</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.credly.com/badges/3f6ff670-8a64-4200-88a8-d82f9d3b856a/linked_in?t=rg5juk">Alteryx Foundational Micro-Credential</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.hackerrank.com/certificates/63dbb4c2029e">SQL (Advanced) Certificate</a>
+                                </li>
+                                <li>
+                                    <a href="https://courses.nvidia.com/certificates/77e2b21bcc2e426faf640c7543ca17a1">Nvidia - Fundamentals of Deep Learning</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h4>Awards</h4>
+                            <ul class="ps-4">
+                                <li>2nd place in 2022 Iowa Graduate Business Analytics Case Competition (National)</li>
+                                <li>1st place in 2022 SAS Optimization Challenge (Purdue University)</li>
+                                <li>3rd place in 2022 Kaggle Crossroads Classic Datathon (State Level)</li>
+                                <li>3rd place in Krannert Graduate Student Association Case Competition (Purdue University)</li>
+                                <li>3rd place in STAMINA IT/Analytics Case Competition (Purdue University)</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr align="center" width="100%">
-
-    <section id="Project">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h3>&#129309;&#127996 My Projects</h3>
-					<div class="row">
-						<!-- Project Entries -->
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/Apple_Watch_Analysis">
-									<div class="center">
-										<img src="pictures/health.png" width="100%">
-										<h5 style="color:black">Apple Watch Analysis</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Developed a dashboard using R Shiny to visualize and analyze eight months of Apple Watch data on exercise and sleep.<br>
-										<a style="color:navy" href="https://paul46186.shinyapps.io/Apple_Watch/"><strong>View the dashboard</strong></a><br>
-										<i class="fa fa-tags" aria-hidden="true"></i> R Shiny, Data Visualization
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/SIL_Machine_Translation_Optimization">
-									<div class="center">
-										<img src="pictures/Language.png" width="100%">
-										<h5 style="color:black">SIL Machine Translation Optimization</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Designed an algorithm to optimize translation datasets, reducing costs and training time for low-resource languages.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, Machine Translation
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/predict_optimization">
-									<div class="center">
-										<img src="pictures/window breakage.png" width="100%">
-										<h5 style="color:black">Prediction-Optimization Integration</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Created an AutoML framework for small businesses to integrate predictive and optimization models for performance improvement.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, AutoML, Optimization
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/SAS-Optimization-Challenge">
-									<div class="center">
-										<img src="pictures/water tank.jpg" width="100%">
-										<h5 style="color:black">SAS Optimization Challenge</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Forecasted water usage and developed optimization models in SAS, securing 1st place in the competition.<br>
-										<a style="color:navy" href="https://www.youtube.com/watch?v=kQihEvt0-0g&t=3s"><strong>Watch the demo</strong></a><br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, SAS, Optimization
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/-Video-Gaming-Classification">
-									<div class="center">
-										<img src="pictures/video game.jpg" width="100%">
-										<h5 style="color:black">Video Game Classification</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Built a model with 88.45% accuracy to classify video game listings on Craigslist, enhancing customer retention.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, NLP
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/phishing_email">
-									<div class="center">
-										<img src="pictures/phishing.png" width="100%">
-										<h5 style="color:black">Phishing Email Detection</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Developed a model achieving 98.53% accuracy in detecting phishing emails, earning 3rd place on Kaggle.<br>
-										<a style="color:navy" href="https://youtu.be/S8u9hUyzDF8"><strong>Watch the demo</strong></a><br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Deep Learning, Python
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="files/MOD Project.pdf">
-									<div class="center">
-										<img src="pictures/MOD.png" width="100%">
-										<h5 style="color:black">Taiwan Sanoh Database Project</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Automated data preprocessing with Excel VBA and designed an ER diagram for business data analysis using MySQL.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Excel VBA, SQL, Database
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/ishitashah23/r-shiny-heart-disease-classification">
-									<div class="center">
-										<img src="pictures/heart.jpg" width="100%">
-										<h5 style="color:black">Heart Disease Classification</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Developed an R Shiny app to predict heart disease risk, making healthcare more accessible to users.<br>
-										<a style="color:navy" href="https://www.youtube.com/watch?v=lzHFE5jNv-I&t=432s"><strong>Watch the demo</strong></a><br>
-										<i class="fa fa-tags" aria-hidden="true"></i> R, Data Visualization
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/Shared-Bike-Analysis/blob/main/Final%20Project%20.ipynb">
-									<div class="center">
-										<img src="pictures/bike sharing.jpg" width="100%">
-										<h5 style="color:black">Bike Sharing Analysis</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Used regression and XGBoost to predict user behavior in bike-sharing systems, providing actionable insights.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, Data Science
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://www.kaggle.com/c/credit-default-project/leaderboard">
-									<div class="center">
-										<img src="pictures/credit card.jpg" width="100%">
-										<h5 style="color:black">Credit Card Default Prediction</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Built an ensemble model to predict credit card defaults, securing a top 10 position in a Kaggle competition.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> SAS, Machine Learning
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://github.com/paul46186/python_Coursera_Analysis">
-									<div class="center">
-										<img src="pictures/coursera.jpg" width="100%">
-										<h5 style="color:black">Coursera Analysis</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Analyzed Coursera data to enhance course enrollments using statistical models like ANOVA and regression.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, Data Analysis
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://www.kaggle.com/paul46186/bellabeat-case-study-2">
-									<div class="center">
-										<img src="pictures/Bellabeat.jpg" width="100%">
-										<h5 style="color:black">Bellabeat Case Study</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Cleaned and analyzed FitBit data to provide insights for Bellabeat's business strategy.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, Data Analytics
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="files/專題書面.pdf">
-									<div class="center">
-										<img src="pictures/Assembly Line.jpg" width="100%">
-										<h5 style="color:black">Assembly Line Optimization</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Optimized assembly line layout using Python and Gurobi, improving production efficiency.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Python, Gurobi, Excel VBA
-									</span>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-md-4 text-left">
-							<div class="outer">
-								<a href="https://site-1117778-3397-7620.mystrikingly.com/">
-									<div class="center">
-										<img src="pictures/Trash.jpg" width="100%">
-										<h5 style="color:black">Boosting Recycling in China</h5>
-									</div>
-								</a>
-								<div class="content">
-									<span style="color:black">Led a design thinking project to improve recycling rates in China through cross-cultural collaboration.<br>
-										<i class="fa fa-tags" aria-hidden="true"></i> Design Thinking, Environmental Science
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-    <hr align="center" width="100%">
-
-    <footer id="Contact">
-        <div class="container">
+    <section id="projects">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>New York, NY</p>
-                    <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
+                <div class="col-lg-12 mb-5">
+                    <h2>Featured Projects</h2>
                 </div>
             </div>
-        </div>	        
+            <div class="row">
+                <!-- Apple Watch Analysis -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/health.png" alt="Apple Watch Analysis">
+                        <div class="project-card-content">
+                            <h5>Apple Watch Analysis</h5>
+                            <p>Developed a dashboard using R Shiny to visualize and analyze eight months of Apple Watch data on exercise and sleep.</p>
+                            <a href="https://paul46186.shinyapps.io/Apple_Watch/" class="btn btn-sm btn-primary">View Dashboard</a>
+                            <a href="https://github.com/paul46186/Apple_Watch_Analysis" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> R Shiny, Data Visualization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIL Machine Translation -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/Language.png" alt="SIL Machine Translation Optimization">
+                        <div class="project-card-content">
+                            <h5>Machine Translation Optimization</h5>
+                            <p>Designed an algorithm to optimize translation datasets, reducing costs and training time for low-resource languages.</p>
+                            <a href="https://github.com/paul46186/SIL_Machine_Translation_Optimization" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> Python, Machine Translation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prediction Optimization -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/window breakage.png" alt="Prediction-Optimization Integration">
+                        <div class="project-card-content">
+                            <h5>Prediction-Optimization Integration</h5>
+                            <p>Created an AutoML framework for small businesses to integrate predictive and optimization models for performance improvement.</p>
+                            <a href="https://github.com/paul46186/predict_optimization" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> Python, AutoML, Optimization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAS Optimization Challenge -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/water tank.jpg" alt="SAS Optimization Challenge">
+                        <div class="project-card-content">
+                            <h5>SAS Optimization Challenge</h5>
+                            <p>Forecasted water usage and developed optimization models in SAS, securing 1st place in the competition.</p>
+                            <a href="https://www.youtube.com/watch?v=kQihEvt0-0g&t=3s" class="btn btn-sm btn-primary">Watch Demo</a>
+                            <a href="https://github.com/paul46186/SAS-Optimization-Challenge" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> Python, SAS, Optimization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Game Classification -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/video game.jpg" alt="Video Game Classification">
+                        <div class="project-card-content">
+                            <h5>Video Game Classification</h5>
+                            <p>Built a model with 88.45% accuracy to classify video game listings on Craigslist, enhancing customer retention.</p>
+                            <a href="https://github.com/paul46186/-Video-Gaming-Classification" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> Python, NLP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phishing Email Detection -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="pictures/phishing.png" alt="Phishing Email Detection">
+                        <div class="project-card-content">
+                            <h5>Phishing Email Detection</h5>
+                            <p>Developed a model achieving 98.53% accuracy in detecting phishing emails, earning 3rd place on Kaggle.</p>
+                            <a href="https://youtu.be/S8u9hUyzDF8" class="btn btn-sm btn-primary">Watch Demo</a>
+                            <a href="https://github.com/paul46186/phishing_email" class="btn btn-sm btn-outline">GitHub</a>
+                            <div class="project-card-tags">
+                                <i class="fa fa-tags"></i> Deep Learning, Python
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="#projects" class="btn btn-primary">View All Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links mb-4">
+                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/paul46186" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
+                    <i class="far fa-file-pdf"></i>
+                </a>
+                <a href="mailto:paul46186@gmail.com" aria-label="Email">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p>New York, NY</p>
+            <p class="copyright">Copyright &copy; 2024 | Paul Chen</p>
+        </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Bootstrap & Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add active class to nav links based on scroll position
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href');
+                    
+                    if (href === `#${current}` || (href === 'index.html' && current === 'hero')) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
