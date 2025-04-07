@@ -1,15 +1,16 @@
-/* Modern Apple-like styling */
+/* Modern Luxury styling with Sapphire & Darker Emerald theme */
 :root {
-  --primary-color: #000;
-  --secondary-color: #86868b;
-  --accent-color: #0071e3;
-  --background-color: #f5f5f7;
-  --card-color: #fff;
+  --primary-color: #152238;         /* Deep sapphire blue for text */
+  --secondary-color: #566681;       /* Steel blue for secondary text */
+  --accent-color: #00594D;          /* Darker emerald green accent */
+  --hyperlink-color: #0A3161;       /* Navy blue for hyperlinks */
+  --background-color: #f6f6f8;      /* Light blue-gray background */
+  --card-color: #fff;               /* White card background */
   --transition-speed: 0.3s;
   --border-radius: 12px;
   --header-height: 64px;
 }
-
+  
 * {
   margin: 0;
   padding: 0;
@@ -54,26 +55,29 @@ p {
   color: var(--secondary-color);
 }
 
+/* Enhanced hyperlink styling */
 a {
-  color: var(--accent-color);
+  color: var(--hyperlink-color);
   text-decoration: none;
   transition: all var(--transition-speed) ease;
+  font-weight: 600; /* Make hyperlinks bold */
 }
 
 a:hover {
   text-decoration: none;
-  opacity: 0.8;
+  opacity: 0.9;
+  color: var(--accent-color);
 }
 
 /* Header and Navigation */
 header {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(246, 246, 248, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(21, 34, 56, 0.08);
   height: var(--header-height);
   display: flex;
   align-items: center;
@@ -89,6 +93,7 @@ header {
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   padding: 0;
+  color: var(--primary-color);
 }
 
 .navbar-toggler {
@@ -154,11 +159,11 @@ section {
   border-radius: 0;
 }
 
-/* Card Styling */
+/* Card Styling - Enhanced for luxury feel */
 .card {
   background-color: var(--card-color);
   border-radius: var(--border-radius);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(21, 34, 56, 0.05);
   border: none;
   overflow: hidden;
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
@@ -167,15 +172,15 @@ section {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 45px rgba(21, 34, 56, 0.08);
 }
 
-/* Project Cards */
+/* Project Cards - Enhanced */
 .project-card {
   border-radius: var(--border-radius);
   overflow: hidden;
   background-color: var(--card-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(21, 34, 56, 0.05);
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
   height: 100%;
   margin-bottom: 2rem;
@@ -183,7 +188,7 @@ section {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 45px rgba(21, 34, 56, 0.08);
 }
 
 .project-card img {
@@ -199,12 +204,18 @@ section {
 .project-card h5 {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--primary-color);
 }
 
 .project-card-tags {
   margin-top: 1rem;
-  color: var(--secondary-color);
+  color: var(--accent-color);
   font-size: 0.875rem;
+  background-color: rgba(0, 89, 77, 0.1);
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 89, 77, 0.2);
 }
 
 /* Skills Section */
@@ -213,13 +224,15 @@ section {
   align-items: center;
   margin: 0.5rem 1rem;
   font-size: 1.25rem;
+  color: var(--primary-color);
 }
 
 .skill-icon i {
   margin-right: 0.5rem;
+  color: var(--accent-color);
 }
 
-/* Experience Section */
+/* Experience Section - Enhanced */
 .experience-item {
   margin-bottom: 2.5rem;
 }
@@ -230,9 +243,13 @@ section {
   margin-bottom: 0.5rem;
 }
 
+.experience-header h4 {
+  color: var(--primary-color);
+}
+
 .experience-title {
   font-weight: 500;
-  color: var(--secondary-color);
+  color: #445573;
   margin-bottom: 0.5rem;
 }
 
@@ -248,9 +265,10 @@ section {
 
 .experience-item li {
   margin-bottom: 0.5rem;
+  color: var(--secondary-color);
 }
 
-/* Artwork Styling */
+/* Artwork Styling - Enhanced */
 .artwork-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -261,7 +279,13 @@ section {
   border-radius: var(--border-radius);
   overflow: hidden;
   background-color: var(--card-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(21, 34, 56, 0.05);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.artwork-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(21, 34, 56, 0.08);
 }
 
 .artwork-item img {
@@ -273,6 +297,62 @@ section {
 .artwork-caption {
   padding: 1rem;
   color: var(--secondary-color);
+}
+
+/* Art grid and items - Enhanced */
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.art-item {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--card-color);
+  box-shadow: 0 8px 30px rgba(21, 34, 56, 0.05);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.art-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(21, 34, 56, 0.08);
+}
+
+.art-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.art-caption {
+  padding: 1rem;
+}
+
+.art-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.art-medium {
+  display: inline-block;
+  background-color: rgba(0, 89, 77, 0.1);
+  color: var(--accent-color);
+  padding: 0.2rem 0.75rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(0, 89, 77, 0.2);
+}
+
+.art-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
 }
 
 /* Profile Section */
@@ -307,7 +387,7 @@ section {
   color: var(--accent-color);
 }
 
-/* Button Styling */
+/* Button Styling - Enhanced for luxury feel */
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: 30px;
@@ -319,23 +399,28 @@ section {
 .btn-primary {
   background-color: var(--accent-color);
   color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 89, 77, 0.2);
 }
 
 .btn-primary:hover {
-  background-color: #005BBF;
+  background-color: #004a40;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 113, 227, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 89, 77, 0.3);
 }
 
 .btn-outline {
   background-color: transparent;
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
+  font-weight: 600;
 }
 
 .btn-outline:hover {
   background-color: var(--accent-color);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 89, 77, 0.2);
 }
 
 /* Footer */
@@ -446,183 +531,204 @@ footer p {
   animation-delay: 0.6s;
 }
 
-/* Dark mode support */
+/* Dark mode support - Enhanced for luxury feel */
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #f5f5f7;
-    --secondary-color: #86868b;
-    --background-color: #1d1d1f;
-    --card-color: #2d2d2f;
+    --primary-color: #e1e6f0;         /* Light blue-gray for text */
+    --secondary-color: #8d9cb3;       /* Medium blue-gray for secondary text */
+    --background-color: #0d1525;      /* Deep navy background */
+    --card-color: #1a2540;            /* Medium navy card background */
+    --hyperlink-color: #4a8bda;       /* Bright navy blue for hyperlinks in dark mode */
+  }
+  
+  a:hover {
+    color: #00A67E;  /* Use a slightly brighter green on hover in dark mode for better visibility */
   }
   
   header {
-    background-color: rgba(29, 29, 31, 0.8);
+    background-color: rgba(13, 21, 37, 0.8);
   }
   
   .card, 
   .project-card,
-  .artwork-item {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  .artwork-item,
+  .art-item {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 89, 77, 0.1);
+  }
+  
+  .project-card-tags,
+  .art-medium {
+    background-color: rgba(0, 89, 77, 0.15);
+    border: 1px solid rgba(0, 89, 77, 0.25);
+  }
+  
+  .btn-outline {
+    border: 1px solid var(--accent-color);
+  }
+  
+  .experience-title {
+    color: #7a8db3;
   }
 }
 
 /* Mobile Navigation Fixes */
 @media (max-width: 991px) {
-/* Ensure navbar toggle button is visible and properly styled */
-.navbar-toggler {
-  display: block;
-  margin-left: auto;
-  padding: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Improve collapsed navbar appearance */
-.navbar-collapse {
-  position: absolute;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  background-color: var(--card-color);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  z-index: 1000;
-}
-
-/* Adjust nav links in mobile view */
-.navbar-nav {
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-}
-
-.nav-item {
-  width: 100%;
-  text-align: center;
-}
-
-.nav-link {
-  padding: 0.75rem !important;
-  display: block;
-  width: 100%;
-}
-
-/* Make header slightly taller on mobile for better touch targets */
-header {
-  height: auto;
-  min-height: var(--header-height);
-}
-
-/* Ensure container has proper positioning */
-header .container-fluid {
-  position: relative;
-}
+  /* Ensure navbar toggle button is visible and properly styled */
+  .navbar-toggler {
+    display: block;
+    margin-left: auto;
+    padding: 0.5rem;
+    border: 1px solid rgba(21, 34, 56, 0.1);
+  }
+  
+  /* Improve collapsed navbar appearance */
+  .navbar-collapse {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--card-color);
+    box-shadow: 0 8px 16px rgba(21, 34, 56, 0.1);
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    z-index: 1000;
+  }
+  
+  /* Adjust nav links in mobile view */
+  .navbar-nav {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+    padding: 0.75rem !important;
+    display: block;
+    width: 100%;
+  }
+  
+  /* Make header slightly taller on mobile for better touch targets */
+  header {
+    height: auto;
+    min-height: var(--header-height);
+  }
+  
+  /* Ensure container has proper positioning */
+  header .container-fluid {
+    position: relative;
+  }
 }
 
 /* Dark mode adjustments for navbar */
 @media (prefers-color-scheme: dark) and (max-width: 991px) {
-.navbar-collapse {
-  background-color: var(--card-color);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.navbar-toggler {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
+  .navbar-collapse {
+    background-color: var(--card-color);
+    border: 1px solid rgba(0, 89, 77, 0.1);
+  }
+  
+  .navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* General responsive improvements */
 @media (max-width: 768px) {
-/* Improve spacing for mobile */
-section {
-  padding: 3rem 0;
-}
-
-/* Make project cards and art items stack better */
-.project-card, .art-item {
-  height: auto;
-  margin-bottom: 1.5rem;
-}
-
-/* Adjust font sizes for better readability on small screens */
-h1 {
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-/* Improve buttons on mobile */
-.btn {
-  padding: 0.625rem 1.25rem;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-}
-
-/* Fix experience items layout */
-.experience-item {
-  margin-bottom: 2rem;
-}
-
-.d-flex.justify-content-between {
-  flex-wrap: wrap;
-}
-
-/* Fix sticky profile card in artwork page */
-#artwork-intro .sticky-top {
-  position: relative;
-  top: 0 !important;
-  margin-bottom: 1.5rem;
-}
-
-/* Improve social links spacing */
-.social-links {
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  /* Improve spacing for mobile */
+  section {
+    padding: 3rem 0;
+  }
+  
+  /* Make project cards and art items stack better */
+  .project-card, .art-item {
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Adjust font sizes for better readability on small screens */
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  /* Improve buttons on mobile */
+  .btn {
+    padding: 0.625rem 1.25rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  /* Fix experience items layout */
+  .experience-item {
+    margin-bottom: 2rem;
+  }
+  
+  .d-flex.justify-content-between {
+    flex-wrap: wrap;
+  }
+  
+  /* Fix sticky profile card in artwork page */
+  #artwork-intro .sticky-top {
+    position: relative;
+    top: 0 !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Improve social links spacing */
+  .social-links {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* Small mobile devices */
 @media (max-width: 576px) {
-.container-fluid {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* Make buttons stack on very small screens */
-.mt-5 .btn {
-  margin-right: 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0.75rem;
-}
-
-/* Fix grid layout for art-grid */
-.art-grid {
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Make buttons stack on very small screens */
+  .mt-5 .btn {
+    margin-right: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Fix grid layout for art-grid */
+  .art-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 /* Fix art items display */
 .art-item img {
-height: 300px;
-object-fit: cover;
+  height: 300px;
+  object-fit: cover;
 }
 
 /* Fix project card image consistency */
 .project-card img {
-height: 200px;
-object-fit: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* Fix for lightbox on mobile */
 .lb-outerContainer, .lb-dataContainer {
-max-width: 100%;
+  max-width: 100%;
 }
