@@ -1,389 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Artwork | Paul Chen</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Lightbox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <style>
-        /* Additional styles for artwork page */
-        .art-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .art-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background-color: var(--card-color);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-        
-        .art-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .art-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .art-caption {
-            padding: 1rem;
-        }
-        
-        .art-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .art-medium {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.2rem 0.75rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .art-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 0.5rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artwork · Paul Chen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #131312;
+    --fg: #f5f3ee;
+    --fg-dim: #8a8783;
+    --fg-faint: #3a3937;
+    --accent: #d4ff3a;
+    --border: rgba(245, 243, 238, 0.10);
+    --border-strong: rgba(245, 243, 238, 0.20);
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  ::selection { background: var(--accent); color: #0a0a0a; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 720px) { .wrap { padding: 0 20px; } }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.7);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  nav.top .inner { display: flex; align-items: center; justify-content: space-between; }
+  nav.top .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  nav.top .brand em { color: var(--accent); font-style: italic; font-weight: 300; }
+  nav.top .back {
+    color: var(--fg-dim);
+    transition: color .2s;
+  }
+  nav.top .back:hover { color: var(--accent); }
+
+  /* ============ HEADER ============ */
+  header.intro {
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  header.intro .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 28px;
+  }
+  header.intro .eyebrow .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+  header.intro h1 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(60px, 10vw, 180px);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    margin-bottom: 32px;
+  }
+  header.intro h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  header.intro p {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(20px, 1.8vw, 26px);
+    font-weight: 400;
+    color: var(--fg-dim);
+    max-width: 60ch;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+  header.intro p em { color: var(--accent); font-style: italic; }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .meta-row { grid-template-columns: repeat(2, 1fr); } }
+  .meta-row .m .n {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .meta-row .m .n .ac { color: var(--accent); }
+  .meta-row .m .l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 10px;
+  }
+
+  /* ============ FILTERS ============ */
+  .filters {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 56px; z-index: 40;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.7);
+  }
+  .filter-row {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .filter-row .lbl {
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-right: 8px;
+  }
+  .chip {
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--fg-dim);
+    cursor: pointer;
+    transition: all .2s;
+    background: transparent;
+    font: inherit;
+  }
+  .chip:hover { color: var(--fg); border-color: var(--fg-dim); }
+  .chip.active { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+  .chip .count { color: inherit; opacity: 0.6; margin-left: 6px; font-size: 10px; }
+
+  /* ============ GALLERY ============ */
+  main { padding: 60px 0 100px; }
+  .gallery {
+    columns: 3;
+    column-gap: 24px;
+  }
+  @media (max-width: 900px) { .gallery { columns: 2; column-gap: 16px; } }
+  @media (max-width: 560px) { .gallery { columns: 1; } }
+  .art {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--bg-2);
+    transition: transform .5s cubic-bezier(.16,1,.3,1);
+  }
+  .art img {
+    width: 100%; height: auto; display: block;
+    filter: grayscale(0.3) contrast(1.05);
+    transition: filter .6s, transform 1s cubic-bezier(.16,1,.3,1);
+  }
+  .art:hover img { filter: none; transform: scale(1.03); }
+  .art .info {
+    position: absolute; inset: auto 0 0 0;
+    padding: 32px 16px 14px;
+    background: linear-gradient(180deg, transparent, rgba(10,10,10,0.85));
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity .4s, transform .4s;
+  }
+  .art:hover .info { opacity: 1; transform: translateY(0); }
+  .art .info .ti {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+    margin-bottom: 4px;
+  }
+  .art .info .me {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+  .art.hidden { display: none; }
+
+  /* ============ LIGHTBOX ============ */
+  #lb {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    display: none;
+    align-items: center; justify-content: center;
+    cursor: zoom-out;
+  }
+  #lb.show { display: flex; }
+  #lb img { max-width: 92vw; max-height: 88vh; object-fit: contain; }
+  #lb .lb-meta {
+    position: absolute; bottom: 24px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  #lb .lb-meta b { color: var(--accent); font-weight: 500; margin-right: 14px; }
+  #lb .lb-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 40px; height: 40px;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    color: var(--fg);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all .2s;
+  }
+  #lb .lb-close:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  footer.bottom {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>
 </head>
-
 <body>
-    <header>
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">Paul Chen</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="experience.html">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="artwork.html">Artwork</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <section id="artwork-intro" class="fade-in">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card mb-4 sticky-top" style="top: 80px; z-index: 100;">
-                        <div class="card-body p-4 text-center">
-                            <img src="art/profile.jpg" alt="Paul Chen" class="img-fluid rounded-4 mb-4" style="max-width: 100%;">
-                            <h3>Paul Chen</h3>
-                            <p class="text-muted mb-3">AI Enthusiast, Artist, and Boardgame Lover</p>
-                            <div class="social-links justify-content-center">
-                                <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://github.com/paul46186" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
-                                    <i class="far fa-file-pdf"></i>
-                                </a>
-                                <a href="/cdn-cgi/l/email-protection#5c2c3d2930686a6d646a1c3b313d3530723f3331" aria-label="Email">
-                                    <i class="far fa-envelope"></i>
-                                </a>
-                                <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-9">
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <h2 class="mb-3">Artwork Gallery</h2>
-                            <p>Welcome to my creative space. Here you'll find a collection of my artwork spanning various mediums from digital art on Procreate to traditional sketching, oil painting, watercolor, and photography. Art is my way of expressing thoughts and emotions that can't always be put into words.</p>
-                            
-                            <div class="art-grid">
+<nav class="top">
+  <div class="wrap inner">
+    <a href="index.html" class="brand">Paul <em>Chen</em></a>
+    <a href="javascript:history.length>1?history.back():(location.href='index.html')" class="back">← back to portfolio</a>
+  </div>
+</nav>
 
-                                <!-- Turbiboo -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/turbiboo 3.PNG" data-lightbox="gallery" data-title="Turbiboo 3 - Ipad Procreate">
-                                        <img src="art/turbiboo 3.PNG" alt="Turbiboo2">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Turbiboo 3</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/turbiboo 3.PNG" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Turbiboo -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/turbiboo 2.PNG" data-lightbox="gallery" data-title="Turbiboo 2 - Ipad Procreate">
-                                        <img src="art/turbiboo 2.PNG" alt="Turbiboo2">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Turbiboo 2</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/turbiboo 2.PNG" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Turbiboo -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/turbiboo 1.PNG" data-lightbox="gallery" data-title="Turbiboo 1 - Ipad Procreate">
-                                        <img src="art/turbiboo 1.PNG" alt="Turbiboo">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Turbiboo 1</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/turbiboo 1.PNG" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+<header class="intro">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span><span>Volume 02 · Off-the-Clock</span></div>
+    <h1>The other<br><em>operating mode.</em></h1>
+    <p>The work I make when I'm not making models. Procreate, oil, watercolor, sketching, photography — collected here in <em>chronologically scrambled order</em>.</p>
 
-                                <!-- Self portrait -->
-                                <div class="art-item" data-category="sketching">
-                                    <a href="art/Self portrait.JPG" data-lightbox="gallery" data-title="Self portrait - Sketching">
-                                        <img src="art/Self portrait.JPG" alt="Self portrait">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Self portrait</h5>
-                                        <span class="art-medium">Sketching</span>
-                                        <div class="art-actions">
-                                            <a href="art/Self portrait.JPG" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- This too shall pass -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/this too shall pass.png" data-lightbox="gallery" data-title="This too shall pass - Ipad Procreate">
-                                        <img src="art/this too shall pass.png" alt="This too shall pass">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">This too shall pass</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/this too shall pass.png" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Eye -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/eye.jpg" data-lightbox="gallery" data-title="Eye - Ipad Procreate">
-                                        <img src="art/eye.jpg" alt="Eye">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Eye</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/eye.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Rabbit -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/rabbit.jpg" data-lightbox="gallery" data-title="Rabbit - Ipad Procreate">
-                                        <img src="art/rabbit.jpg" alt="Rabbit">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Rabbit</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/rabbit.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Aurora -->
-                                <div class="art-item" data-category="oil">
-                                    <a href="art/aurora.jpg" data-lightbox="gallery" data-title="Aurora - Oil Painting">
-                                        <img src="art/aurora.jpg" alt="Aurora">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Aurora</h5>
-                                        <span class="art-medium">Oil Painting</span>
-                                        <div class="art-actions">
-                                            <a href="art/aurora.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Repose -->
-                                <div class="art-item" data-category="watercolor">
-                                    <a href="art/repose.jpg" data-lightbox="gallery" data-title="Repose - Watercolor Painting">
-                                        <img src="art/repose.jpg" alt="Repose">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Repose</h5>
-                                        <span class="art-medium">Watercolor Painting</span>
-                                        <div class="art-actions">
-                                            <a href="art/repose.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Strive -->
-                                <div class="art-item" data-category="watercolor">
-                                    <a href="art/strive.jpg" data-lightbox="gallery" data-title="Strive - Watercolor Painting">
-                                        <img src="art/strive.jpg" alt="Strive">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Strive</h5>
-                                        <span class="art-medium">Watercolor Painting</span>
-                                        <div class="art-actions">
-                                            <a href="art/strive.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Let there be light -->
-                                <div class="art-item" data-category="photography">
-                                    <a href="art/light.jpg" data-lightbox="gallery" data-title="Let there be light - Photograph">
-                                        <img src="art/light.jpg" alt="Let there be light">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Let there be light</h5>
-                                        <span class="art-medium">Photography</span>
-                                        <div class="art-actions">
-                                            <a href="art/light.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Practice -->
-                                <div class="art-item" data-category="procreate">
-                                    <a href="art/practice.jpg" data-lightbox="gallery" data-title="Practice - Ipad Procreate">
-                                        <img src="art/practice.jpg" alt="Practice">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Practice</h5>
-                                        <span class="art-medium">Ipad Procreate</span>
-                                        <div class="art-actions">
-                                            <a href="art/practice.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Apple or Watermelon? -->
-                                <div class="art-item" data-category="sketching">
-                                    <a href="art/apple.jpg" data-lightbox="gallery" data-title="Apple or Watermelon? - Sketching">
-                                        <img src="art/apple.jpg" alt="Apple or Watermelon?">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Apple or Watermelon?</h5>
-                                        <span class="art-medium">Sketching</span>
-                                        <div class="art-actions">
-                                            <a href="art/apple.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Flower -->
-                                <div class="art-item" data-category="pen">
-                                    <a href="art/flower.jpg" data-lightbox="gallery" data-title="Flower - Pen">
-                                        <img src="art/flower.jpg" alt="Flower">
-                                    </a>
-                                    <div class="art-caption">
-                                        <h5 class="art-title">Flower</h5>
-                                        <span class="art-medium">Pen</span>
-                                        <div class="art-actions">
-                                            <a href="art/flower.jpg" download class="btn btn-sm btn-outline">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="meta-row">
+      <div class="m"><div class="n">14</div><div class="l">pieces collected</div></div>
+      <div class="m"><div class="n">5</div><div class="l">mediums</div></div>
+      <div class="m"><div class="n">10M<span class="ac">+</span></div><div class="l">google maps photo views</div></div>
+      <div class="m"><div class="n">13</div><div class="l">countries photographed</div></div>
+    </div>
+  </div>
+</header>
 
-    <footer>
-        <div class="container">
-            <p>New York, NY</p>
-            <p class="copyright">Copyright &copy; 2026 | Paul Chen</p>
-        </div>
-    </footer>
+<div class="filters">
+  <div class="wrap">
+    <div class="filter-row" id="filters">
+      <span class="lbl">// medium</span>
+      <button class="chip active" data-f="all">all<span class="count">14</span></button>
+      <button class="chip" data-f="procreate">procreate</button>
+      <button class="chip" data-f="oil">oil</button>
+      <button class="chip" data-f="watercolor">watercolor</button>
+      <button class="chip" data-f="sketching">sketching</button>
+      <button class="chip" data-f="photography">photography</button>
+      <button class="chip" data-f="pen">pen</button>
+    </div>
+  </div>
+</div>
 
-    <!-- Bootstrap, Lightbox & Custom JS -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Lightbox configuration
-            lightbox.option({
-                'resizeDuration': 200,
-                'wrapAround': tru
+<main>
+  <div class="wrap">
+    <div class="gallery" id="gallery"></div>
+  </div>
+</main>
+
+<div id="lb">
+  <div class="lb-close">✕</div>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-meta"><b id="lbT"></b><span id="lbM"></span></div>
+</div>
+
+<div class="wrap">
+  <footer class="bottom">
+    <span>© 2026 · Paul Chen · New York, NY</span>
+    <span>part of the 2026 refactor</span>
+  </footer>
+</div>
+
+<script>
+const works = [
+  { src: 'art/turbiboo 3.PNG', title: 'Turbiboo 3', medium: 'procreate' },
+  { src: 'art/turbiboo 2.PNG', title: 'Turbiboo 2', medium: 'procreate' },
+  { src: 'art/turbiboo 1.PNG', title: 'Turbiboo 1', medium: 'procreate' },
+  { src: 'art/this too shall pass.png', title: 'This too shall pass', medium: 'procreate' },
+  { src: 'art/eye.jpg', title: 'Eye', medium: 'procreate' },
+  { src: 'art/rabbit.jpg', title: 'Rabbit', medium: 'procreate' },
+  { src: 'art/practice.jpg', title: 'Practice', medium: 'procreate' },
+  { src: 'art/aurora.jpg', title: 'Aurora', medium: 'oil' },
+  { src: 'art/repose.jpg', title: 'Repose', medium: 'watercolor' },
+  { src: 'art/strive.jpg', title: 'Strive', medium: 'watercolor' },
+  { src: 'art/Self portrait.JPG', title: 'Self portrait', medium: 'sketching' },
+  { src: 'art/apple.jpg', title: 'Apple or Watermelon?', medium: 'sketching' },
+  { src: 'art/flower.jpg', title: 'Flower', medium: 'pen' },
+  { src: 'art/light.jpg', title: 'Let there be light', medium: 'photography' },
+];
+
+const gallery = document.getElementById('gallery');
+works.forEach((w, idx) => {
+  const a = document.createElement('div');
+  a.className = 'art';
+  a.dataset.medium = w.medium;
+  a.dataset.idx = idx;
+  a.innerHTML = `
+    <img src="${w.src}" alt="${w.title}" loading="lazy">
+    <div class="info">
+      <div class="ti">${w.title}</div>
+      <div class="me">${w.medium}</div>
+    </div>`;
+  gallery.appendChild(a);
+});
+
+// counts
+const counts = {};
+works.forEach(w => { counts[w.medium] = (counts[w.medium] || 0) + 1; });
+document.querySelectorAll('#filters .chip').forEach(c => {
+  const f = c.dataset.f;
+  if (f === 'all') return;
+  const ct = counts[f] || 0;
+  if (ct > 0) c.innerHTML = c.innerHTML.replace(/<span class="count">.*?<\/span>$/,'') + `<span class="count">${ct}</span>`;
+});
+
+// filtering
+document.querySelectorAll('#filters .chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('#filters .chip').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    const f = c.dataset.f;
+    document.querySelectorAll('.art').forEach(a => {
+      a.classList.toggle('hidden', f !== 'all' && a.dataset.medium !== f);
+    });
+  });
+});
+
+// lightbox
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbT = document.getElementById('lbT');
+const lbM = document.getElementById('lbM');
+document.querySelectorAll('.art').forEach(a => {
+  a.addEventListener('click', () => {
+    const w = works[+a.dataset.idx];
+    lbImg.src = w.src;
+    lbT.textContent = w.title;
+    lbM.textContent = '· ' + w.medium;
+    lb.classList.add('show');
+  });
+});
+lb.addEventListener('click', () => lb.classList.remove('show'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('show'); });
+</script>
+</body>
+</html>

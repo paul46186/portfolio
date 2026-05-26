@@ -1,574 +1,1206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Paul Chen | AI & Analytics Professional</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paul Chen · Decision Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #111111;
+    --fg: #f5f3ee;
+    --fg-dim: #8a8783;
+    --fg-faint: #3a3937;
+    --accent: #d4ff3a;
+    --border: rgba(245, 243, 238, 0.08);
+    --border-strong: rgba(245, 243, 238, 0.16);
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body { min-height: 100vh; }
+  ::selection { background: var(--accent); color: #0a0a0a; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: "calt" 0; }
+  .display { font-family: 'Inter Tight', sans-serif; letter-spacing: -0.03em; line-height: 0.95; font-weight: 500; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============ BOOT ============ */
+  #boot {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s;
+  }
+  #boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  #boot-inner {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.8;
+    width: min(560px, 90vw);
+  }
+  #boot-inner .line { display: block; opacity: 0; }
+  #boot-inner .line.show { opacity: 1; }
+  #boot-inner .dim { color: var(--fg-dim); }
+  #boot-inner .accent { color: var(--accent); }
+  .caret::after {
+    content: "▮";
+    color: var(--accent);
+    margin-left: 4px;
+    animation: blink 0.9s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ============ LAYOUT ============ */
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 720px) { .wrap { padding: 0 20px; } }
+
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    backdrop-filter: blur(20px) saturate(120%);
+    background: rgba(10, 10, 10, 0.7);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(.16,1,.3,1);
+  }
+  nav.top.in { transform: translateY(0); }
+  nav.top .inner { display: flex; align-items: center; justify-content: space-between; }
+  nav.top .brand { display: flex; align-items: center; gap: 10px; letter-spacing: 0.02em; }
+  nav.top .brand .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent); }
+  nav.top ul { display: flex; gap: 28px; list-style: none; }
+  nav.top a { color: var(--fg-dim); transition: color .2s; position: relative; }
+  nav.top a:hover, nav.top a.active { color: var(--fg); }
+  nav.top a.active::before { content: "▸ "; color: var(--accent); }
+  nav.top .clock { color: var(--fg-dim); }
+  @media (max-width: 720px) { nav.top ul { gap: 14px; } nav.top .clock { display: none; } }
+
+  /* ============ HERO ============ */
+  #hero { position: relative; min-height: 100vh; padding: 120px 0 80px; display: flex; align-items: center; }
+  #hero .wrap { width: 100%; }
+  .hero-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .hero-main { grid-template-columns: 1fr; gap: 40px; } }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    align-items: start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 48px;
+  }
+  .hero-meta .label { color: var(--fg-faint); }
+  .hero-meta .value { color: var(--fg); }
+
+  h1.headline {
+    font-size: clamp(60px, 10vw, 154px);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    font-weight: 500;
+    font-family: 'Inter Tight', sans-serif;
+  }
+  h1.headline .accent { color: var(--accent); font-style: italic; font-weight: 300; }
+  h1.headline .out { color: transparent; -webkit-text-stroke: 1.5px var(--fg); }
+  h1.headline .small {
+    display: inline-block; font-size: 0.18em; vertical-align: super;
+    font-family: 'JetBrains Mono', monospace; color: var(--fg-dim);
+    letter-spacing: 0; font-weight: 400;
+    margin-left: -0.15em;
+  }
+
+  /* portrait beside headline */
+  .hero-portrait {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    background: var(--bg-2);
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) { .hero-portrait { margin-top: 0; max-width: 380px; } }
+  .hero-portrait img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    filter: grayscale(0.6) contrast(1.05);
+    transition: filter .8s ease;
+  }
+  .hero-portrait:hover img { filter: grayscale(0) contrast(1.02); }
+  .hero-portrait::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.65));
+    pointer-events: none;
+  }
+  .hero-portrait .corners { position: absolute; inset: 10px; pointer-events: none; }
+  .hero-portrait .corners::before,
+  .hero-portrait .corners::after {
+    content: ""; position: absolute; width: 18px; height: 18px;
+    border: 1px solid var(--accent);
+  }
+  .hero-portrait .corners::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+  .hero-portrait .corners::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+  .hero-portrait .tag {
+    position: absolute; bottom: 14px; left: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg);
+    background: rgba(10,10,10,0.7);
+    backdrop-filter: blur(8px);
+    padding: 5px 10px;
+  }
+  .hero-portrait .scan {
+    position: absolute; top: 12px; right: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex; flex-direction: column; gap: 3px; align-items: flex-end;
+    background: rgba(10,10,10,0.5);
+    padding: 6px 9px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-portrait .scan .blip { display: inline-flex; align-items: center; gap: 5px; }
+  .hero-portrait .scan .blip::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 900px) { .hero-bottom { grid-template-columns: 1fr; gap: 28px; } }
+  .hero-bottom .col-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .hero-bottom p.bio {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--fg);
+    max-width: 56ch;
+    text-wrap: pretty;
+  }
+  .hero-bottom .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--fg);
+  }
+  .pill.accent { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.d1 { transition-delay: 0.1s; }
+  .reveal.d2 { transition-delay: 0.2s; }
+  .reveal.d3 { transition-delay: 0.3s; }
+  .reveal.d4 { transition-delay: 0.4s; }
+  .reveal.d5 { transition-delay: 0.5s; }
+
+  /* ============ TICKER ============ */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .ticker-track {
+    display: flex; gap: 60px;
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.04em;
+    animation: tick 50s linear infinite;
+  }
+  .ticker-track span b { color: var(--accent); font-weight: 500; }
+  .ticker-track span::before { content: "◆ "; color: var(--accent); }
+  @keyframes tick { to { transform: translateX(-50%); } }
+
+  /* ============ SECTION HEADERS ============ */
+  section { padding: 120px 0; position: relative; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    margin-bottom: 64px;
+    align-items: end;
+  }
+  @media (max-width: 720px) { .section-head { grid-template-columns: 1fr; gap: 16px; } }
+  .section-head .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .section-head .num b { color: var(--accent); font-weight: 500; }
+  .section-head h2 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(40px, 5.5vw, 80px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .section-head h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+
+  /* ============ FEATURED WORK ============ */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .featured-grid { grid-template-columns: 1fr; } }
+  .feat-card {
+    background: var(--bg);
+    padding: 32px;
+    position: relative;
+    min-height: 380px;
+    display: flex; flex-direction: column;
+  }
+  .feat-card .top {
+    display: flex; justify-content: space-between; align-items: start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+  }
+  .feat-card .top .id { color: var(--accent); }
+  .feat-card h3 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .feat-card p.summary {
+    color: var(--fg-dim);
+    font-size: 15px;
+    margin-bottom: auto;
+    max-width: 44ch;
+  }
+  .feat-card .impact {
+    display: flex; align-items: baseline; gap: 8px;
+    font-family: 'Inter Tight', sans-serif;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .feat-card .impact .big {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.025em;
+  }
+  .feat-card .impact .small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .feat-card .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+
+  /* ============ EARLY/ARCHIVE (minimized) ============ */
+  .early-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .early-h {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .early-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+  }
+  .early-toggle {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--fg);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .early-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .early-toggle .ch {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    border: 1px solid currentColor; border-radius: 50%;
+    font-size: 14px;
+  }
+  .early-cell.extra { display: none; }
+  .early-grid.open .early-cell.extra { display: flex; }
+  .early-toggle.open .lbl { font-size: 0; }
+  .early-toggle.open .lbl::before { content: "hide archive"; font-size: 12px; }
+  .early-toggle.open .ch { transform: rotate(45deg); }
+
+  .early-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 1px;
+  }
+  @media (max-width: 900px) { .early-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .early-grid { grid-template-columns: 1fr; } }
+  .early-cell {
+    background: var(--bg);
+    padding: 22px;
+    transition: background .3s;
+    cursor: pointer;
+    min-height: 120px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .early-cell:hover { background: var(--bg-2); }
+  .early-cell .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--fg-faint);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    display: flex; justify-content: space-between;
+  }
+  .early-cell .num .ar { color: var(--fg-faint); transition: color .3s, transform .3s; }
+  .early-cell:hover .num .ar { color: var(--accent); transform: translate(3px, -3px); }
+  .early-cell h5 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .early-cell .sk {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--fg-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ EXPERIENCE — 3-column timeline ============ */
+  .timeline { display: grid; gap: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 160px 1fr 1.5fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .tl-item { grid-template-columns: 1fr; gap: 16px; } }
+  .tl-item .when {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.04em;
+  }
+  .tl-item .when .now {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent);
+  }
+  .tl-item .when .now::before {
+    content: ""; width: 7px; height: 7px; background: var(--accent); border-radius: 50%;
+    box-shadow: 0 0 14px var(--accent);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .tl-item .when .loc { display: block; margin-top: 6px; color: var(--fg-faint); }
+  .tl-item .who h4 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .tl-item .who .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+  .tl-item .who .role b { color: var(--accent); font-weight: 500; }
+  .tl-item .bullets ul { list-style: none; padding: 0; }
+  .tl-item .bullets ul li {
+    color: var(--fg);
+    font-size: 15px;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+    max-width: 56ch;
+    line-height: 1.5;
+  }
+  .tl-item .bullets ul li::before {
+    content: "→"; position: absolute; left: 0; color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  }
+  .tl-item .bullets ul li b { color: var(--accent); font-weight: 500; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .tl-item .bullets .sub-role {
+    margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--fg-dim); margin-bottom: 12px;
+  }
+
+  /* ============ MERITS GRID ============ */
+  .merits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .merits { grid-template-columns: 1fr; } }
+  .merit-block { background: var(--bg); padding: 32px; }
+  .merit-block h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .merit-block ul { list-style: none; }
+  .merit-block li,
+  .merit-block a.li {
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--fg);
+    display: flex; justify-content: space-between; gap: 16px;
+    text-decoration: none;
+    transition: color .2s, padding .2s;
+  }
+  .merit-block a.li:hover { color: var(--accent); padding-left: 6px; }
+  .merit-block li:first-child,
+  .merit-block ul a.li:first-child { border-top: none; padding-top: 0; }
+  .merit-block li .meta,
+  .merit-block a.li .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--fg-dim); flex-shrink: 0; }
+  .merit-block a.li:hover .meta { color: var(--fg-dim); }
+
+  /* ============ ART TEASER ============ */
+  .art-teaser {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 0;
+  }
+  .art-teaser .head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: end;
+  }
+  .art-teaser .head h3 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(32px, 4.5vw, 60px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .art-teaser .head h3 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .art-teaser .head .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+  .art-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 720px) { .art-strip { grid-template-columns: repeat(2, 1fr); } }
+  .art-tile {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-2);
+    transition: transform .5s cubic-bezier(.16,1,.3,1);
+  }
+  .art-tile img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.3) contrast(1.05);
+    transition: filter .5s, transform .8s;
+  }
+  .art-tile:hover img { filter: grayscale(0) contrast(1); transform: scale(1.04); }
+  .art-tile .caption {
+    position: absolute; bottom: 12px; left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--fg);
+    background: rgba(10,10,10,0.7);
+    backdrop-filter: blur(8px);
+    padding: 4px 8px;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .art-tile:hover .caption { opacity: 1; }
+
+  /* ============ CONTACT ============ */
+  #contact { padding: 140px 0 80px; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+  }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .contact-big {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(48px, 7vw, 110px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .contact-big em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .contact-side .row {
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    transition: padding .3s, background .3s;
+    cursor: pointer;
+  }
+  .contact-side .row:hover { padding-left: 12px; }
+  .contact-side .row:last-child { border-bottom: 1px solid var(--border); }
+  .contact-side .row .label { color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+  .contact-side .row .val { color: var(--fg); }
+  .contact-side .row:hover .val { color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  footer.bottom {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  footer.bottom .ascii { color: var(--fg-faint); }
+
+  /* ============ SIDE RAILS ============ */
+  .side-rail {
+    position: fixed; left: 14px; top: 50%; transform: translateY(-50%);
+    z-index: 40;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .side-rail.right { left: auto; right: 14px; transform: translateY(-50%); writing-mode: vertical-rl; }
+  @media (max-width: 1100px) { .side-rail { display: none; } }
+
+  /* link to alternate */
+  .alt-link {
+    position: fixed; bottom: 18px; right: 18px;
+    z-index: 60;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    background: var(--bg-2);
+    border: 1px solid var(--border-strong);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all .2s;
+  }
+  .alt-link:hover { color: var(--accent); border-color: var(--accent); }
+</style>
 </head>
-
 <body>
-    <header>
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">Paul Chen</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="experience.html">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="artwork.html">Artwork</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
+<!-- ============ BOOT INTRO ============ -->
+<div id="boot">
+  <div id="boot-inner">
+    <span class="line dim">&gt; initializing portfolio.runtime</span>
+    <span class="line dim">&gt; loading <span class="accent">neural_decisions.bin</span> ........ <span class="accent">ok</span></span>
+    <span class="line dim">&gt; loading <span class="accent">healthcare_models.bin</span> .... <span class="accent">ok</span></span>
+    <span class="line dim">&gt; loading <span class="accent">paint_brushes.dll</span> ........ <span class="accent">ok</span></span>
+    <span class="line dim">&gt; calibrating curiosity ............. <span class="accent">ok</span></span>
+    <span class="line dim">&gt; <span class="accent">env</span>: human / scientist / artist</span>
+    <span class="line">&gt; ready.</span>
+    <span class="line caret">&gt;</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="wrap inner">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>PAUL CHEN — DECISION SCIENTIST</span>
+    </div>
+    <ul>
+      <li><a href="#hero" class="active">00 / index</a></li>
+      <li><a href="#work">01 / work</a></li>
+      <li><a href="#experience">02 / experience</a></li>
+      <li><a href="#merits">03 / merits</a></li>
+      <li><a href="#offclock">04 / off-the-clock</a></li>
+      <li><a href="#contact">05 / contact</a></li>
+    </ul>
+    <div class="clock" id="clock">NYC — 00:00</div>
+  </div>
+</nav>
+
+<div class="side-rail">EST.2022 — NYC ◆ DECISION SCIENCE</div>
+<div class="side-rail right">v.2026 / REFACTOR</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-meta reveal">
+      <span class="label">// loc</span><span class="value">New York, NY · 40.7°N 74.0°W</span>
+      <span class="label">// role</span><span class="value">Lead Decision Scientist, CVS Health</span>
+      <span class="label">// focus</span><span class="value">LLMs · RAG · causal inference · production AI</span>
+      <span class="label">// status</span><span class="value" style="color:var(--accent);">◉ shipping models that move money</span>
+    </div>
+
+    <div class="hero-main">
+      <h1 class="headline reveal d1">
+        Paul<br>
+        <span class="accent">Chen,</span><span class="small">/01</span><br>
+        <em style="font-style:italic;font-weight:300;color:var(--accent);">thinking</em><br>
+        <span class="out">in models.</span>
+      </h1>
+
+      <aside class="hero-portrait reveal d2">
+        <img src="pictures/Profile Photo.jpg" alt="Paul Chen">
+        <div class="corners"></div>
+        <div class="scan">
+          <span class="blip">SUBJECT_01</span>
+          <span style="color:var(--fg-dim)">PAUL.CHEN / NYC</span>
         </div>
-    </header>
+        <span class="tag">// CVS HEALTH · 2026</span>
+      </aside>
+    </div>
 
-    <section id="hero" class="fade-in">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-7 pe-lg-5">
-                    <span class="overline">AI & Analytics Professional</span>
-                    <h1>Hi, I'm <em>Paul Chen</em></h1>
-                    <h3 class="mb-4">Decision Scientist · Artist · Builder</h3>
-                    <p class="lead mb-4">
-                        I specialize in applying AI and analytics to solve real-world problems in healthcare and beyond, transforming complex challenges into actionable insights.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/paiweichen/" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/paul46186" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="files/Paul Chen Resume.pdf" aria-label="Resume">
-                            <i class="far fa-file-pdf"></i>
-                        </a>
-                        <a href="/cdn-cgi/l/email-protection#75051400194143444d43351218141c195b161a18" aria-label="Email">
-                            <i class="far fa-envelope"></i>
-                        </a>
-                        <a href="https://www.instagram.com/paul46186" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <div class="mt-5">
-                        <a href="#about" class="btn btn-primary me-3">About Me</a>
-                        <a href="#projects" class="btn btn-outline">View Projects</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 mt-5 mt-lg-0">
-                    <div class="profile-image">
-                        <img src="pictures/Profile Photo.jpg" alt="Paul Chen" class="img-fluid rounded-4">
-                    </div>
-                </div>
-            </div>
+    <div class="hero-bottom">
+      <div class="reveal d2">
+        <div class="col-label">// abstract</div>
+        <p class="bio">
+          I build AI &amp; analytics that actually ship — production ML and GenAI inside healthcare, where decisions move millions of dollars and millions of patients. I lead a cross-functional team of 20+ at CVS Health, partner with SVPs on the AI roadmap, and have driven <b style="color:var(--accent)">$35M+</b> in measurable impact across CVS and Kearney. Off-hours, I paint, travel, and over-document restaurants on Google Maps.
+        </p>
+      </div>
+      <div class="reveal d3">
+        <div class="col-label">// stack</div>
+        <div class="pill-row">
+          <span class="pill accent">AI / ML</span>
+          <span class="pill">LLMs · MCP · RAG</span>
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">R</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">LangChain</span>
+          <span class="pill">CatBoost</span>
+          <span class="pill">Google ADK</span>
+          <span class="pill">GCP</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">SAS</span>
+          <span class="pill">HTML</span>
         </div>
-    </section>
-
-    <!-- Stats Band -->
-    <section id="stats-band">
-        <div class="container-fluid">
-            <div class="row justify-content-center text-center">
-                <div class="col-6 col-md-3">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-brain"></i></div>
-                        <h4>AI & LLMs</h4>
-                        <p>Agentic solutions in healthcare</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                        <h4>5+ Years</h4>
-                        <p>Analytics & data science</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <h4>13+ Countries</h4>
-                        <p>Avid traveler & foodie</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-palette"></i></div>
-                        <h4>10M+ Views</h4>
-                        <p>Google Maps Local Guide Lv. 7</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="reveal d4">
+        <div class="col-label">// elsewhere</div>
+        <div class="pill-row">
+          <a class="pill accent" href="files/Paul Chen Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+          <a class="pill" href="https://www.linkedin.com/in/paiweichen/">LinkedIn ↗</a>
+          <a class="pill" href="https://github.com/paul46186">GitHub ↗</a>
+          <a class="pill" href="https://www.instagram.com/paul46186">Instagram ↗</a>
+          <a class="pill" href="mailto:paul46186@gmail.com">Email ↗</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="fade-in delay-1">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="about-card">
-                        <span class="overline">About Me</span>
-                        <h2 class="mb-4">Turning complex data<br>into human impact</h2>
-                        <div class="section-divider"></div>
-                            <p>
-                                I'm a Lead Decision Scientist at CVS Health, where I ship production ML and GenAI systems end-to-end in healthcare. I lead a cross-functional team of 20+ across data engineering, IT, and business stakeholders, partnering with SVP-level leadership to define AI roadmaps and drive measurable business impact — $35M+ and counting.
-                            </p>
-                            <p>
-                                Previously, I was a Sr Management Consultant at Kearney (Data & Analytics Practice), where I designed and delivered GenAI platforms and supply chain analytics for Fortune 500 clients. I'm particularly passionate about <strong>LLMs, RAG, causal inference, and the end-to-end deployment of AI solutions that create real-world impact.</strong>
-                            </p>
-                            <p>
-                                Outside of work, I'm an avid traveler and a foodie who loves to explore new places and cultures. So far, I've visited Spain, the United States, Japan, Mexico, South Korea, China, Singapore, Indonesia (Bali), the United Kingdom, the Czech Republic, Austria, United Arab Emirates (Dubai), and Thailand! I also enjoy painting, cooking, playing board games, Nintendo, and badminton.
-                            </p>
-                            <p class="mb-0">
-                                <strong>Fun fact:</strong> I am a proud Google Maps Level 7 Local Guide, and my photos have garnered over 10 million views.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <span><b>$35M+</b> impact shipped to production</span>
+    <span><b>20+</b> cross-functional team at CVS</span>
+    <span><b>2×</b> CVS Vibrancy Recognition recipient</span>
+    <span><b>13</b> countries visited and counting</span>
+    <span><b>10M+</b> Google Maps photo views — Local Guide Lv. 7</span>
+    <span><b>98.53%</b> phishing detection accuracy</span>
+    <span><b>60%</b> reduction in prior-auth turnaround time</span>
+    <span><b>5+ yrs</b> applied AI &amp; analytics</span>
+  </div>
+</div>
+
+<!-- ============ SELECTED WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">// <b>01</b> &nbsp;selected_work</div>
+      <h2>Production AI,<br>measured in <em>impact</em>.</h2>
+    </div>
+
+    <div class="featured-grid">
+
+      <article class="feat-card">
+        <div class="top"><span class="id">// CASE_01 — CVS HEALTH</span><span>2024–2026</span></div>
+        <h3>GenAI Prior-Authorization Engine</h3>
+        <p class="summary">Productionized a system that reads patient EHRs and auto-populates prior-auth forms — automating the entire PA process end-to-end and shortening turnaround time by 60%.</p>
+        <div class="impact">
+          <span class="big">$3M</span>
+          <span class="small">/year EBIT impact · 60% faster PA turnaround</span>
         </div>
-    </section>
+        <div class="tags"><span class="pill">LLM</span><span class="pill">RAG</span><span class="pill">Healthcare</span><span class="pill">Python</span></div>
+      </article>
 
-    <section id="skills" class="fade-in delay-2">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <span class="overline">Expertise</span>
-                    <h2>Skills & Toolkit</h2>
-                    <div class="section-divider centered"></div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="card">
-                        <div class="card-body p-5 text-center">
-                            <div class="row">
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-python"></i>
-                                        <span>Python</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-r-project"></i>
-                                        <span>R</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-database"></i>
-                                        <span>SQL</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-file-excel"></i>
-                                        <span>Excel VBA</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-chart-bar"></i>
-                                        <span>PowerBI</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-html5"></i>
-                                        <span>HTML</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                        <span>SAS</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-robot"></i>
-                                        <span>AI/ML</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mb-4">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-brain"></i>
-                                        <span>LLMs</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <article class="feat-card">
+        <div class="top"><span class="id">// CASE_02 — CVS HEALTH</span><span>2025</span></div>
+        <h3>Bad-Debt Risk Model, Pre-Shipment</h3>
+        <p class="summary">CatBoost model that flags orders likely to become bad debt before they ship. Validated via A/B test; preventing write-offs through proactive intervention at the point of decision.</p>
+        <div class="impact">
+          <span class="big">$3M</span>
+          <span class="small">/year write-offs prevented · validated via A/B</span>
         </div>
-    </section>
+        <div class="tags"><span class="pill">CatBoost</span><span class="pill">Causal</span><span class="pill">A/B Testing</span></div>
+      </article>
 
-    <section id="education" class="fade-in delay-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <h2>Education</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body p-4">
-                            <h4>Purdue University</h4>
-                            <h5 class="text-muted">Krannert School of Management</h5>
-                            <p class="mb-2">Master of Science in Business Analytics and Information Management</p>
-                            <p class="mb-3 small">Graduated: May 2022</p>
-                            <ul class="ps-4">
-                                <li>Academic Honors | Merit Scholarship Recipient</li>
-                                <li>Technical Coursework: Computational Complexity, Analyzing Unstructured Data, R for Analytics, Data Mining, Advanced Business Analytics, and more</li>
-                                <li>Business Coursework: IT Project Management, Customer Analytics, IT Innovation, Change Management, Communication and Persuasion, Operation Management</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body p-4">
-                            <h4>National Cheng Kung University</h4>
-                            <h5 class="text-muted">Industrial and Information Management</h5>
-                            <p class="mb-2">Bachelor of Management Science</p>
-                            <p class="mb-3 small">Graduated: June 2020</p>
-                            <ul class="ps-4">
-                                <li>Relevant Coursework: Operation Research, Optimization, Inventory Management, Quality Management, Marketing Management</li>
-                                <li>Capstone Project – "Assembly line balancing problem - The case study of a shoe manufacturing company"</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <article class="feat-card">
+        <div class="top"><span class="id">// CASE_03 — CVS HEALTH</span><span>2025–2026</span></div>
+        <h3>Clinical Note Mining for Adherence</h3>
+        <p class="summary">LLM workstreams that mine clinical notes to surface adherence drivers and run referral-cancellation root-cause analysis. Two parallel programs validated by experiment, lifting conversion measurably.</p>
+        <div class="impact">
+          <span class="big">$30M</span>
+          <span class="small">/year combined conversion lift</span>
         </div>
-    </section>
+        <div class="tags"><span class="pill">LLM</span><span class="pill">Causal</span><span class="pill">NLP</span></div>
+      </article>
 
-    <section id="recognitions">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <h2>Recognitions</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body p-4">
-                            <h4>Publications & Certifications</h4>
-                            <ul class="ps-4">
-                                <li>
-                                    <a href="https://mwdsi2022.exordo.com/files/papers/42/paper_custom_fields/1/IP_MWDSI_paper_final.pdf">Intelligently Ordering Machine Translation Seed Data to Improve Low Resource Local Language Translation</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.credly.com/badges/3f6ff670-8a64-4200-88a8-d82f9d3b856a/linked_in?t=rg5juk">Alteryx Foundational Micro-Credential</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.hackerrank.com/certificates/63dbb4c2029e">SQL (Advanced) Certificate</a>
-                                </li>
-                                <li>
-                                    <a href="https://courses.nvidia.com/certificates/77e2b21bcc2e426faf640c7543ca17a1">Nvidia - Fundamentals of Deep Learning</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body p-4">
-                            <h4>Awards</h4>
-                            <ul class="ps-4">
-                                <li>2nd place in 2022 Iowa Graduate Business Analytics Case Competition (National)</li>
-                                <li>1st place in 2022 SAS Optimization Challenge (Purdue University)</li>
-                                <li>3rd place in 2022 Kaggle Crossroads Classic Datathon (State Level)</li>
-                                <li>3rd place in Krannert Graduate Student Association Case Competition (Purdue University)</li>
-                                <li>3rd place in STAMINA IT/Analytics Case Competition (Purdue University)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <article class="feat-card">
+        <div class="top"><span class="id">// CASE_04 — KEARNEY</span><span>2022–2024</span></div>
+        <h3>Enterprise GenAI Insight Platform</h3>
+        <p class="summary">Designed &amp; delivered a retrieval-augmented insight platform for a Fortune-500 IT client, cutting C-suite decision time by 90% over internal data. Two procurement PoCs followed (spend categorization + contract extraction).</p>
+        <div class="impact">
+          <span class="big">90%</span>
+          <span class="small">faster exec decisions · F500 IT client</span>
         </div>
-    </section>
+        <div class="tags"><span class="pill">RAG</span><span class="pill">GenAI</span><span class="pill">Consulting</span></div>
+      </article>
+    </div>
+  </div>
+</section>
 
-	<section id="projects">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <span class="overline">Portfolio</span>
-                    <h2>Selected Projects</h2>
-                    <div class="section-divider"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/health.png" alt="Apple Watch Analysis">
-                        <div class="project-card-content">
-                            <h5>Apple Watch Analysis</h5>
-                            <p>Developed a dashboard using R Shiny to visualize and analyze eight months of Apple Watch data on exercise and sleep.</p>
-                            <a href="https://paul46186.shinyapps.io/Apple_Watch/" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Dashboard</a>
-                            <a href="https://github.com/paul46186/Apple_Watch_Analysis" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> R Shiny, Data Visualization
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- ============ EARLY/ACADEMIC WORK (minimized) ============ -->
+<section id="index" style="padding-top:0; padding-bottom: 100px;">
+  <div class="wrap">
+    <div class="early-head">
+      <div>
+        <div class="num" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-faint);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">// <b style="color:var(--accent)">01.b</b> &nbsp;archive · 2019–2022</div>
+        <h3 class="early-h">Earlier &amp; academic work.</h3>
+        <p class="early-sub">Student-era projects — kept around for the curious.</p>
+      </div>
+      <button id="earlyToggle" type="button" class="early-toggle">
+        <span class="lbl">show 11 more</span>
+        <span class="ch">+</span>
+      </button>
+    </div>
 
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/Language.png" alt="SIL Machine Translation Optimization">
-                        <div class="project-card-content">
-                            <h5>Machine Translation Optimization</h5>
-                            <p>Designed an algorithm to optimize translation datasets, reducing costs and training time for low-resource languages.</p>
-                            <a href="https://github.com/paul46186/SIL_Machine_Translation_Optimization" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, Machine Translation
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="early-grid" id="earlyGrid">
+      <!-- rows injected by JS -->
+    </div>
+  </div>
+</section>
 
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/window breakage.png" alt="Prediction-Optimization Integration">
-                        <div class="project-card-content">
-                            <h5>Prediction-Optimization Integration</h5>
-                            <p>Created an AutoML framework for small businesses to integrate predictive and optimization models for performance improvement.</p>
-                            <a href="https://github.com/paul46186/predict_optimization" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, AutoML, Optimization
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">// <b>02</b> &nbsp;experience</div>
+      <h2>Five years,<br>three labels, <em>one thread</em>.</h2>
+    </div>
 
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/water tank.jpg" alt="SAS Optimization Challenge">
-                        <div class="project-card-content">
-                            <h5>SAS Optimization Challenge</h5>
-                            <p>Forecasted water usage and developed optimization models in SAS, securing 1st place in the competition.</p>
-                            <a href="https://www.youtube.com/watch?v=kQihEvt0-0g&t=3s" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">Watch Demo</a>
-                            <a href="https://github.com/paul46186/SAS-Optimization-Challenge" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, SAS, Optimization
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="timeline">
 
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/video game.jpg" alt="Video Game Classification">
-                        <div class="project-card-content">
-                            <h5>Video Game Classification</h5>
-                            <p>Built a model with 88.45% accuracy to classify video game listings on Craigslist, enhancing customer retention.</p>
-                            <a href="https://github.com/paul46186/-Video-Gaming-Classification" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, NLP
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/phishing.png" alt="Phishing Email Detection">
-                        <div class="project-card-content">
-                            <h5>Phishing Email Detection</h5>
-                            <p>Developed a model achieving 98.53% accuracy in detecting phishing emails, earning 3rd place on Kaggle.</p>
-                            <a href="https://youtu.be/S8u9hUyzDF8" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">Watch Demo</a>
-                            <a href="https://github.com/paul46186/phishing_email" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Deep Learning, Python
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/MOD.png" alt="Taiwan Sanoh Database Project">
-                        <div class="project-card-content">
-                            <h5>Taiwan Sanoh Database Project</h5>
-                            <p>Automated data preprocessing with Excel VBA and designed an ER diagram for business data analysis using MySQL.</p>
-                            <a href="files/MOD Project.pdf" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Details (PDF)</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Excel VBA, MySQL, Database Design
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/heart.jpg" alt="Heart Disease Classification">
-                        <div class="project-card-content">
-                            <h5>Heart Disease Classification</h5>
-                            <p>Developed an R Shiny app to predict heart disease risk, making healthcare more accessible to users.</p>
-                            <a href="https://www.youtube.com/watch?v=lzHFE5jNv-I&t=432s" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">Watch Demo</a>
-                            <a href="https://github.com/ishitashah23/r-shiny-heart-disease-classification" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> R, Data Visualization
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/bike sharing.jpg" alt="Bike Sharing Analysis">
-                        <div class="project-card-content">
-                            <h5>Bike Sharing Analysis</h5>
-                            <p>Used regression and XGBoost to predict user behavior in bike-sharing systems, providing actionable insights.</p>
-                            <a href="https://github.com/paul46186/Shared-Bike-Analysis/blob/main/Final%20Project%20.ipynb" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">View Notebook</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, Data Science
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                     <div class="project-card">
-                         <img src="pictures/credit card.jpg" alt="Credit Card Default Prediction">
-                         <div class="project-card-content">
-                             <h5>Credit Card Default Prediction</h5>
-                             <p>Built an ensemble model to predict credit card defaults, securing a top 10 position in a Kaggle competition.</p>
-                             <a href="https://www.kaggle.com/c/credit-default-project/leaderboard" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Kaggle</a>
-                             <div class="project-card-tags">
-                                 <i class="fa fa-tags"></i> SAS, Machine Learning
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/coursera.jpg" alt="Coursera Analysis">
-                        <div class="project-card-content">
-                            <h5>Coursera Analysis</h5>
-                            <p>Analyzed Coursera data to enhance course enrollments using statistical models like ANOVA and regression.</p>
-                            <a href="https://github.com/paul46186/python_Coursera_Analysis" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, Data Analysis
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/Bellabeat.jpg" alt="Bellabeat Case Study">
-                        <div class="project-card-content">
-                            <h5>Bellabeat Case Study</h5>
-                            <p>Cleaned and analyzed FitBit data to provide insights for Bellabeat's business strategy.</p>
-                            <a href="https://www.kaggle.com/paul46186/bellabeat-case-study-2" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Kaggle</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, Data Analytics
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/Assembly Line.jpg" alt="Assembly Line Optimization">
-                        <div class="project-card-content">
-                            <h5>Assembly Line Optimization</h5>
-                            <p>Optimized assembly line layout using Python and Gurobi, improving production efficiency.</p>
-                            <a href="files/專題書面.pdf" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Details (PDF)</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Python, Gurobi, Excel VBA
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="project-card">
-                        <img src="pictures/Trash.jpg" alt="Boosting Recycling in China">
-                        <div class="project-card-content">
-                            <h5>Boosting Recycling in China</h5>
-                            <p>Led a design thinking project to improve recycling rates in China through cross-cultural collaboration.</p>
-                            <a href="https://site-1117778-3397-7620.mystrikingly.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">View Site</a>
-                            <div class="project-card-tags">
-                                <i class="fa fa-tags"></i> Design Thinking, Environmental Science
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div> </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>New York, NY</p>
-            <p class="copyright">Copyright &copy; 2026 | Paul Chen</p>
+      <div class="tl-item">
+        <div class="when">
+          <span class="now">MAR 2026 — NOW</span>
+          <span class="loc">Jersey City, NJ</span>
         </div>
-    </footer>
+        <div class="who">
+          <h4>CVS Health</h4>
+          <p class="role"><b>Lead Decision Scientist</b><br>healthcare AI · GenAI · LLM eval</p>
+        </div>
+        <div class="bullets">
+          <ul>
+            <li>Product owner of an enterprise GenAI insight engine; lead a <b>20+</b> cross-functional team supporting a <b>$300M</b> cost-of-service reduction target.</li>
+            <li>Designed CatBoost risk model preventing <b>~$3M/yr</b> in write-offs, validated via A/B testing.</li>
+            <li>Lead 2 LLM workstreams: referral root-cause (<b>$10M/yr</b>) and clinical-note adherence mining (<b>$20M/yr</b>).</li>
+            <li>Partner with SVPs to define the AI roadmap, build-vs-buy tradeoffs, and LLM eval standards.</li>
+            <li>30+ technical interviews; designed Senior DS hiring frameworks.</li>
+          </ul>
+          <div class="sub-role">PRIOR ROLE · Senior Decision Scientist · May 2024 – Mar 2026</div>
+          <ul>
+            <li>GenAI prior-auth productionization: <b>60%</b> faster turnaround, <b>$3M/yr</b> EBIT.</li>
+            <li><b>$1M+</b> in annual savings via benefit-verification analytics.</li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- Bootstrap & Custom JS -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Add active class to nav links based on scroll position
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            window.addEventListener('scroll', function() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= sectionTop - 100) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    const href = link.getAttribute('href');
-                    
-                    if (href === `#${current}` || (href === 'index.html' && current === 'hero')) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        document.querySelector(targetId).scrollIntoView({
-                            beha
+      <div class="tl-item">
+        <div class="when">
+          <span>JUL 2022 — MAY 2024</span>
+          <span class="loc">Chicago, IL</span>
+        </div>
+        <div class="who">
+          <h4>Kearney</h4>
+          <p class="role"><b>Sr Management Consultant</b><br>Data &amp; Analytics Practice</p>
+        </div>
+        <div class="bullets">
+          <ul>
+            <li>Identified <b>$2M (16%)</b> in logistics savings across 70+ carrier RFPs.</li>
+            <li>GenAI insight platform for F500 IT client → <b>90%</b> faster exec decisions.</li>
+            <li>Two procurement PoCs: <b>+70%</b> baseline efficiency.</li>
+            <li>4-wall outdoor retailer assessment: <b>$5M/yr</b> opportunity surfaced.</li>
+            <li>End-to-end supply-chain diagnosis: <b>$2M/yr</b> savings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="when">
+          <span>2019 — 2022</span>
+          <span class="loc">West Lafayette, IN</span>
+        </div>
+        <div class="who">
+          <h4>SIL International</h4>
+          <p class="role"><b>Data Scientist</b><br>linguistic NGO · UN-affiliated</p>
+        </div>
+        <div class="bullets">
+          <ul>
+            <li>Designed a deep-learning algorithm for rare-language MT seed selection — <b>85%+</b> training-time reduction.</li>
+            <li>Published in MWDSI 2022: <i>Intelligently Ordering Machine Translation Seed Data</i>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="when">
+          <span>2019 — 2020</span>
+          <span class="loc">Qingyuan, China</span>
+        </div>
+        <div class="who">
+          <h4>Shoetown Group</h4>
+          <p class="role"><b>Data Analyst</b><br>shoe manufacturer for Nike</p>
+        </div>
+        <div class="bullets">
+          <ul>
+            <li>Excel VBA inventory automation, cutting manual entry by <b>3600%</b>.</li>
+            <li>Led 5-person team on robust workstation-layout optimization in Python + Gurobi.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ MERITS ============ -->
+<section id="merits">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">// <b>03</b> &nbsp;merits + edu</div>
+      <h2>Receipts.<br><em>Awards, papers, schools.</em></h2>
+    </div>
+
+    <div class="merits">
+      <div class="merit-block">
+        <h5>// awards</h5>
+        <ul>
+          <li><span><b>CVS Vibrancy Recognition</b> · 2× recipient</span><span class="meta">2024 → 2026 · cvs</span></li>
+          <a class="li" href="files/Iowa Fastenal Presentation.pdf" target="_blank" rel="noopener"><span>2nd · Iowa Graduate Business Analytics Case Competition ↗</span><span class="meta">2022 · national</span></a>
+          <a class="li" href="files/SAS Optimization Challenge Slide.pdf" target="_blank" rel="noopener"><span>1st · SAS Optimization Challenge ↗</span><span class="meta">2022 · purdue</span></a>
+          <a class="li" href="files/CCAC.pdf" target="_blank" rel="noopener"><span>3rd · Kaggle Crossroads Classic Datathon ↗</span><span class="meta">2022 · state</span></a>
+          <a class="li" href="files/KGSA case competition.pdf" target="_blank" rel="noopener"><span>3rd · KGSA Case Competition ↗</span><span class="meta">2021 · purdue</span></a>
+          <a class="li" href="files/WRCC Stamina Case Competition.pdf" target="_blank" rel="noopener"><span>3rd · STAMINA IT/Analytics Case Competition ↗</span><span class="meta">2021 · purdue</span></a>
+        </ul>
+      </div>
+      <div class="merit-block">
+        <h5>// publications + certs</h5>
+        <ul>
+          <a class="li" href="https://mwdsi2022.exordo.com/files/papers/42/paper_custom_fields/1/IP_MWDSI_paper_final.pdf" target="_blank" rel="noopener"><span>Intelligently Ordering MT Seed Data ↗</span><span class="meta">MWDSI 2022 · paper</span></a>
+          <a class="li" href="https://digitalcredential.stanford.edu/check/DE2CE761AFD7CA1407B42096A0C89120A7FE690667CFDDEE69D6B977FBF706E1emloMi9PakkxMTlSSnM1WG9TVGtTL2NndnRidS9EcmhaNXRZeUVKQnMwY0hKYkVR" target="_blank" rel="noopener"><span>Product Management ↗</span><span class="meta">stanford online</span></a>
+          <a class="li" href="https://cambridge.credential.getsmarter.com/ad89ccd2-8017-413a-896b-fde78318c019#acc.e43dfgEI" target="_blank" rel="noopener"><span>Sustainable Supply Chain Management ↗</span><span class="meta">cambridge · CISL</span></a>
+          <a class="li" href="https://www.credly.com/badges/3f6ff670-8a64-4200-88a8-d82f9d3b856a/linked_in?t=rg5juk" target="_blank" rel="noopener"><span>Alteryx Foundational Micro-Credential ↗</span><span class="meta">alteryx</span></a>
+          <a class="li" href="https://www.hackerrank.com/certificates/63dbb4c2029e" target="_blank" rel="noopener"><span>SQL (Advanced) Certificate ↗</span><span class="meta">hackerrank</span></a>
+          <a class="li" href="https://courses.nvidia.com/certificates/77e2b21bcc2e426faf640c7543ca17a1" target="_blank" rel="noopener"><span>Fundamentals of Deep Learning ↗</span><span class="meta">nvidia</span></a>
+        </ul>
+      </div>
+      <div class="merit-block">
+        <h5>// education · graduate</h5>
+        <ul>
+          <li><span><b>Purdue University</b><br><span style="color:var(--fg-dim);font-size:13px">M.S., Business Analytics &amp; Information Management</span></span><span class="meta">2022</span></li>
+        </ul>
+        <p style="color:var(--fg-dim);font-size:13px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">Academic Honors · Merit Scholarship. Coursework: computational complexity, unstructured data, data mining, customer analytics.</p>
+      </div>
+      <div class="merit-block">
+        <h5>// education · undergraduate</h5>
+        <ul>
+          <li><span><b>National Cheng Kung University</b><br><span style="color:var(--fg-dim);font-size:13px">B.S., Management Science · Industrial &amp; Information Mgmt</span></span><span class="meta">2020</span></li>
+        </ul>
+        <p style="color:var(--fg-dim);font-size:13px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">Capstone: assembly-line balancing for a shoe manufacturer. OR · optimization · inventory mgmt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ART TEASER ============ -->
+<section id="offclock" style="padding:0">
+  <div class="art-teaser">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="num" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-faint);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px">// <b style="color:var(--accent)">04</b> &nbsp;off-the-clock</div>
+          <h3>Decisions by day,<br><em>paintings by night.</em></h3>
+        </div>
+        <div class="sub">
+          A small gallery →<br>
+          <a href="artwork.html" style="color:var(--accent);font-size:14px;">view full collection ↗</a>
+        </div>
+      </div>
+
+      <div class="art-strip">
+        <a href="artwork.html" class="art-tile"><img src="art/this too shall pass.png" alt=""><span class="caption">this too shall pass · procreate</span></a>
+        <a href="artwork.html" class="art-tile"><img src="art/eye.jpg" alt=""><span class="caption">eye · procreate</span></a>
+        <a href="artwork.html" class="art-tile"><img src="art/aurora.jpg" alt=""><span class="caption">aurora · oil</span></a>
+        <a href="artwork.html" class="art-tile"><img src="art/strive.jpg" alt=""><span class="caption">strive · watercolor</span></a>
+        <a href="artwork.html" class="art-tile"><img src="art/repose.jpg" alt=""><span class="caption">repose · watercolor</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="num" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-faint);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:32px">// <b style="color:var(--accent)">05</b> &nbsp;contact</div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="contact-big">
+          Want to ship<br>something <em>real</em>?<br>Let's talk.
+        </h2>
+        <p style="color:var(--fg-dim);font-size:16px;max-width:50ch;margin-top:32px">Open to: senior IC roles in applied AI / decision science, advisory engagements, and the occasional speaking gig. Closed to: anything that's a thin wrapper over GPT.</p>
+      </div>
+      <div class="contact-side">
+        <a class="row" href="mailto:paul46186@gmail.com">
+          <span class="label">email</span><span class="val">paul46186@gmail.com →</span>
+        </a>
+        <a class="row" href="https://www.linkedin.com/in/paiweichen/">
+          <span class="label">linkedin</span><span class="val">/in/paiweichen →</span>
+        </a>
+        <a class="row" href="https://github.com/paul46186">
+          <span class="label">github</span><span class="val">/paul46186 →</span>
+        </a>
+        <a class="row" href="https://www.instagram.com/paul46186">
+          <span class="label">instagram</span><span class="val">@paul46186 →</span>
+        </a>
+        <a class="row" href="files/Paul Chen Resume.pdf">
+          <span class="label">resume</span><span class="val">download.pdf →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="wrap">
+  <footer class="bottom">
+    <span>© 2026 · Paul Chen · New York, NY</span>
+    <span class="ascii">[01001000_01001001]</span>
+    <span>v2.0 / refactor · build 2026.05</span>
+  </footer>
+</div>
+
+
+
+<script>
+// =========================================================
+// BOOT INTRO
+// =========================================================
+const lines = document.querySelectorAll('#boot-inner .line');
+let i = 0;
+function step() {
+  if (i >= lines.length) {
+    setTimeout(() => {
+      document.getElementById('boot').classList.add('done');
+      document.querySelector('nav.top').classList.add('in');
+      revealAll();
+    }, 380);
+    return;
+  }
+  lines[i].classList.add('show');
+  i++;
+  const delay = i === lines.length ? 300 : (90 + Math.random() * 110);
+  setTimeout(step, delay);
+}
+setTimeout(step, 220);
+
+// =========================================================
+// CLOCK
+// =========================================================
+function tick() {
+  const d = new Date();
+  const opts = { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  document.getElementById('clock').textContent = 'NYC — ' + d.toLocaleTimeString('en-US', opts);
+}
+setInterval(tick, 1000); tick();
+
+// =========================================================
+// REVEAL ON SCROLL
+// =========================================================
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+function revealAll() {
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+// also reveal section heads etc.
+document.querySelectorAll('.section-head, .feat-card, .tl-item, .merit-block, .art-tile, .early-cell').forEach((el, idx) => {
+  el.classList.add('reveal');
+  if (idx % 4 === 1) el.classList.add('d1');
+  if (idx % 4 === 2) el.classList.add('d2');
+  if (idx % 4 === 3) el.classList.add('d3');
+  io.observe(el);
+});
+
+// =========================================================
+// TICKER — duplicate for seamless loop
+// =========================================================
+const t = document.getElementById('ticker');
+t.innerHTML += t.innerHTML;
+
+// =========================================================
+// EARLY WORK ARCHIVE (collapsed by default)
+// =========================================================
+const projects = [
+  { i: '15', t: 'Apple Watch Analysis', s: 'R Shiny · Viz', url: 'https://paul46186.shinyapps.io/Apple_Watch/' },
+  { i: '14', t: 'SIL MT Optimization', s: 'Python · DL', url: 'https://github.com/paul46186/SIL_Machine_Translation_Optimization' },
+  { i: '13', t: 'Prediction-Optimization Integration', s: 'Python · AutoML', url: 'https://github.com/paul46186/predict_optimization' },
+  { i: '12', t: 'SAS Optimization Challenge', s: 'SAS · OR', url: 'https://www.youtube.com/watch?v=kQihEvt0-0g' },
+  { i: '11', t: 'Video Game Classification', s: 'Python · NLP', url: 'https://github.com/paul46186/-Video-Gaming-Classification' },
+  { i: '10', t: 'Phishing Email Detection', s: 'DL · Python', url: 'https://youtu.be/S8u9hUyzDF8' },
+  { i: '09', t: 'Taiwan Sanoh Database', s: 'VBA · MySQL', url: 'files/MOD Project.pdf' },
+  { i: '08', t: 'Heart Disease Classification', s: 'R · Viz', url: 'https://www.youtube.com/watch?v=lzHFE5jNv-I' },
+  { i: '07', t: 'Bike Sharing Analysis', s: 'Python · DS', url: 'https://github.com/paul46186/Shared-Bike-Analysis/blob/main/Final%20Project%20.ipynb' },
+  { i: '06', t: 'Credit Card Default Prediction', s: 'SAS · ML', url: 'https://www.kaggle.com/c/credit-default-project/leaderboard' },
+  { i: '05', t: 'Coursera Enrollment Analysis', s: 'Python · Stats', url: 'https://github.com/paul46186/python_Coursera_Analysis' },
+  { i: '04', t: 'Bellabeat Case Study', s: 'Python', url: 'https://www.kaggle.com/paul46186/bellabeat-case-study-2' },
+  { i: '03', t: 'Assembly Line Optimization', s: 'Python · Gurobi', url: 'files/專題書面.pdf' },
+  { i: '02', t: 'Boosting Recycling in China', s: 'Strategy', url: 'https://site-1117778-3397-7620.mystrikingly.com/' },
+];
+
+const earlyGrid = document.getElementById('earlyGrid');
+projects.forEach((p, idx) => {
+  const el = document.createElement(p.url ? 'a' : 'div');
+  el.className = 'early-cell' + (idx >= 3 ? ' extra' : '');
+  if (p.url) { el.href = p.url; el.target = '_blank'; el.rel = 'noopener'; }
+  el.innerHTML = `
+    <div class="num"><span>PROJ_${p.i.padStart(2,'0')}</span><span class="ar">↗</span></div>
+    <h5>${p.t}</h5>
+    <div class="sk">${p.s}</div>`;
+  earlyGrid.appendChild(el);
+});
+
+const earlyToggle = document.getElementById('earlyToggle');
+earlyToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  const open = earlyGrid.classList.toggle('open');
+  earlyToggle.classList.toggle('open', open);
+});
+
+// =========================================================
+// ACTIVE NAV ON SCROLL
+// =========================================================
+const sections = ['hero','work','experience','merits','offclock','contact'];
+window.addEventListener('scroll', () => {
+  let cur = sections[0];
+  for (const id of sections) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 120) cur = id;
+  }
+  document.querySelectorAll('nav.top a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+// smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 60, behavior: 'smooth' }); }
+    }
+  });
+});
+</script>
+</body>
+</html>
